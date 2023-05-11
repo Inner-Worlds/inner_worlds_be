@@ -49,6 +49,7 @@ group :development, :test do
   gem 'faker'
 end
 
+gem 'rubocop'
 gem "graphiql-rails"
 gem 'graphql'
 gem 'faraday'
