@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "relationships" do 
+    it { should have_many :dream_tags }
+    it { should have_many(:dreams).through(:dream_tags) }
+  end
 end

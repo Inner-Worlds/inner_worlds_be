@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe DreamEmotion, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "relationships" do 
+    it { should belong_to :emotion }
+    it { should belong_to :dream }
+  end
 end
