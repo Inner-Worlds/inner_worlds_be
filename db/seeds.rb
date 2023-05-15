@@ -8,14 +8,14 @@
   2.times do  
     user = User.create( name: Faker::TvShows::VentureBros.character, email: Faker::Internet.email )
     3.times  do 
-      dream = Dream.create( user: user)
+      dream = Dream.create( user_id: user.id, description: Faker::Movies::Ghostbusters.quote, lucidity: Faker::Number.within(range: 1..5), title: Faker::Movies::PrincessBride.character, dream_date: Faker::Date.in_date_period)
       2.times do 
         emotion = Emotion.create(name: Faker::Music::UmphreysMcgee.song) 
-        dream_emotion = DreamEmotion.create(dream: dream, emotion: emotion)
+        dream_emotion = DreamEmotion.create(dream_id: dream.id, emotion_id: emotion.id)
       end
       2.times do 
         tag = Tag.create(name: Faker::Creature::Animal.name) 
-        dream_tag = DreamTag.create(tag: tag, dream: dream)
+        dream_tag = DreamTag.create(tag_id: tag.id, dream_id: dream.id)
       end
     end
   end
