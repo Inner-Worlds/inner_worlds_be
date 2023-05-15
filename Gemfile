@@ -47,6 +47,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rspec-graphql_matchers'
 end
 
 gem 'rubocop'
