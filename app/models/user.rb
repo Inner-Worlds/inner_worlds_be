@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates_presence_of :name,
+                        :email
   has_many :dreams
   has_many :dream_emotions, through: :dreams
   has_many :dream_tags, through: :dreams
