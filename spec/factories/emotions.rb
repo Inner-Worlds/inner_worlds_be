@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :emotion do
-    name { "MyString" }
+    name { Faker::Movies::PrincessBride.quote }
   end
 end
