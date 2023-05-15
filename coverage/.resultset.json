@@ -1,0 +1,348 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/environment.rb": {
+        "lines": [
+          null,
+          1,
+          null,
+          null,
+          1
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/application.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/boot.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/environments/test.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/initializers/cors.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/dream_emotions.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/dream_tags.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/dreams.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/emotions.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/tags.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/factories/users.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/config/routes.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/dream_emotion.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/models/dream_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/dream.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/models/dream_tag_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/dream_tag.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/models/emotion_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/emotion.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/models/tag_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/tag.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/spec/models/user_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/jadestewart/Turing/4mod/projects/inner_worlds_be/app/models/user.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      }
+    },
+    "timestamp": 1684106030
+  }
+}
