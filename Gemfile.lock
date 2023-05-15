@@ -103,6 +103,9 @@ GEM
       railties
       sprockets-rails
     graphql (1.13.19)
+    graphql-client (0.18.0)
+      activesupport (>= 3.0)
+      graphql
     hashdiff (1.0.1)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
@@ -264,6 +267,7 @@ DEPENDENCIES
   figaro
   graphiql-rails
   graphql
+  graphql-client
   pg (~> 1.1)
   pry
   puma (~> 5.0)

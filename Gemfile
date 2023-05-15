@@ -48,6 +48,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-graphql_matchers'
+  gem 'graphql-client'
 end
 
 gem 'rubocop'
