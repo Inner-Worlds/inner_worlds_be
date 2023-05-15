@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :dream do
-    user { nil }
-    description { "MyString" }
-    lucidity { 1 }
-    title { "MyString" }
-    dream_date { "2023-05-12 15:21:14" }
+    user { Faker::Number.within(range: 1..5) }
+    description { Faker::Movies::Ghostbusters.quote }
+    lucidity { Faker::Number.within(range: 1..5) }
+    title { Faker::Movies::PrincessBride.character }
+    dream_date { Faker::Date.in_date_period }
   end
 end
