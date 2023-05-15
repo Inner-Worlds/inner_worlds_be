@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :dream_tag do
-    dream { nil }
-    tag { nil }
+    association :tag, :dream
   end
 end
