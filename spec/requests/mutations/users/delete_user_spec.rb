@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Mutations::Users::DeleteUser, type: :request do
   describe '.resolve' do
-    it 'removes a user' do
+    it 'removes a user by user id' do
       user = create(:user)
 
       post '/graphql', params: { query: mutation(user.id) }
