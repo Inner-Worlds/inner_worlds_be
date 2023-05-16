@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :dream do
     user { Faker::Number.within(range: 0..5) }

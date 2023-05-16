@@ -1,10 +1,15 @@
-class Mutations::Users::DeleteUser < ::Mutations::BaseMutation
-  argument :id, ID, required: true
+# frozen_string_literal: true
 
-  type Types::UserType
+module Mutations
+  module Users
+    class DeleteUser < ::Mutations::BaseMutation
+      argument :id, ID, required: true
 
-  def resolve(id:)
-    User.find(id).destroy!
+      type Types::UserType
+
+      def resolve(id:)
+        User.find(id).destroy!
+      end
+    end
   end
 end
- 
