@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :dream_emotion do
-    emotion { nil }
-    dream { nil }
+    association :emotion, :dream
   end
 end
