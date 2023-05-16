@@ -32,4 +32,10 @@ class InnerWorldsBeSchema < GraphQL::Schema
     # For example, use Rails' GlobalID library (https://github.com/rails/globalid):
     GlobalID.find(global_id)
   end
+
+  # def self.user_errors
+  #   rescue_from(ActiveRecord::RecordNotFound)  do |obj|
+  #     raise GraphQL::ExecutionError, "#{obj} not found"
+  #   end
+  # end
 end
