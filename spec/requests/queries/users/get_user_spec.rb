@@ -1,17 +1,19 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe User, type: :request do 
-  describe "Get one user" do 
-    it "successfully returns one user" do 
+require 'rails_helper'
+
+RSpec.describe User, type: :request do
+  describe 'Get one user' do
+    it 'successfully returns one user' do
       user = create(:user)
-      dream = create(:dream, user: user)
+      dream = create(:dream, user:)
       emotion = create(:emotion)
-      dream_emotion = create(:dream_emotion, emotion: emotion, dream: dream)
+      create(:dream_emotion, emotion:, dream:)
       tag = create(:tag)
-      dream_tag = create(:dream_tag, tag: tag, dream: dream)
+      create(:dream_tag, tag:, dream:)
 
-      post "/graphql", params: { query: query_user(user.id)}
-      
+      post '/graphql', params: { query: query_user(user.id) }
+
       user_response = JSON.parse(response.body, symbolize_names: true)
       user_data = user_response[:data][:user]
 
@@ -39,16 +41,16 @@ RSpec.describe User, type: :request do
 
         expect(dream).to have_key(:emotions)
         expect(dream[:emotions]).to be_an(Array)
-          dream[:emotions].each do |emotion|
-            expect(emotion).to have_key(:name)
-            expect(emotion[:name]).to be_a(String)
-          end
-          expect(dream).to have_key(:tags)
-          expect(dream[:tags]).to be_an(Array)
-            dream[:tags].each do |tag|
-              expect(tag).to have_key(:name)
-              expect(tag[:name]).to be_a(String)
-            end
+        dream[:emotions].each do |emotion|
+          expect(emotion).to have_key(:name)
+          expect(emotion[:name]).to be_a(String)
+        end
+        expect(dream).to have_key(:tags)
+        expect(dream[:tags]).to be_an(Array)
+        dream[:tags].each do |tag|
+          expect(tag).to have_key(:name)
+          expect(tag[:name]).to be_a(String)
+        end
       end
     end
   end
@@ -59,7 +61,7 @@ RSpec.describe User, type: :request do
         user(id: #{id}){
           name
           email
-          dreams { 
+          dreams {#{' '}
             title
             description
             lucidity
@@ -73,6 +75,6 @@ RSpec.describe User, type: :request do
           }
         }
       }
-      GQL
+    GQL
   end
 end
