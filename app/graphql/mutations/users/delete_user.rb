@@ -1,13 +1,10 @@
-module Mutations
-  module Users
-    class DeleteUser < ::Mutations::BaseMutation
-      argument :id, ID, required: true
+class Mutations::Users::DeleteUser < ::Mutations::BaseMutation
+  argument :id, ID, required: true
 
-      type Types::UserType
+  type Types::UserType
 
-      def resolve(id:)
-        User.find(id).destroy!
-      end
-    end
+  def resolve(id:)
+    User.find(id).destroy!
   end
 end
+ 
