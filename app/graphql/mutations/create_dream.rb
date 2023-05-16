@@ -21,10 +21,16 @@ class Mutations::CreateDream < Mutations::BaseMutation
       dream_date: Date.parse(dream_date),
     )
 
+    emotions = emotions.map do |name| 
+      new_emotion = Emotion.find_or_create_by(name: name)
+      dream_emotions = DreamEmotion.create!(dream_id: dream.id, emotion_id: new_emotion.id)
+    end
+
     tags = tags.map do |name| 
       new_tag = Tag.find_or_create_by(name: name)
       dream_tag = DreamTag.create!(dream_id: dream.id, tag_id: new_tag.id)
     end
+
     dream
   end
 end
