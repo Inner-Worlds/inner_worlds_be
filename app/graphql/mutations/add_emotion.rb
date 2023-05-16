@@ -16,10 +16,10 @@ class Mutations::AddEmotion < Mutations::BaseMutation
       return error_response(emotion.errors.full_messages) unless emotion.save
     end
 
-    dream_emotion = DreamEmotion.find_or_create_by(dream_id: dream.id, tag_id: emotion.id)
+    dream_emotion = DreamEmotion.find_or_create_by(dream_id: dream.id, emotion_id: emotion.id)
     
     {
-      dreamTag: dream_emotion,
+      dreamEmotion: dream_emotion,
       emotion: emotion,
       errors: [],
     }
