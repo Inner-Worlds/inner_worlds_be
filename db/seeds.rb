@@ -1,3 +1,11 @@
+User.delete_all
+Dream.delete_all
+DreamEmotion.delete_all
+DreamTag.delete_all
+Tag.delete_all
+Emotion.delete_all
+
+
 # frozen_string_literal: true
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -7,7 +15,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-2.times do
+100.times do
   user = User.create(name: Faker::TvShows::VentureBros.character, email: Faker::Internet.email)
   3.times do
     dream = Dream.create(user_id: user.id, description: Faker::Movies::Ghostbusters.quote,
