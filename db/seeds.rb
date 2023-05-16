@@ -1,9 +1,10 @@
-User.delete_all
-Dream.delete_all
 DreamEmotion.delete_all
 DreamTag.delete_all
 Tag.delete_all
 Emotion.delete_all
+Dream.delete_all
+User.delete_all
+
 
 
 # frozen_string_literal: true
