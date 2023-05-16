@@ -2,6 +2,7 @@ module Types
   class MutationType < Types::BaseObject
     field :delete_user, mutation: Mutations::Users::DeleteUser
     field :add_tag, mutation: Mutations::AddTag
-    field :delete_dream, mutation: Mutations::DeleteDream
+    field :createDream, mutation: Mutations::CreateDream
+    field :deleteDream, mutation: Mutations::DeleteDream
   end
 end
