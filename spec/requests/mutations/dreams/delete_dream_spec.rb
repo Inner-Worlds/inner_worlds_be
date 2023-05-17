@@ -18,7 +18,7 @@ RSpec.describe Dream, type: :request do
 
       user_response = JSON.parse(response.body, symbolize_names: true)
       deleted_data = user_response[:data][:deleteDream]
-
+ 
       expect(Dream.count).to eq(0)
       expect(deleted_data.keys).to eq(%i[id title])
       expect(deleted_data[:id].to_i).to eq(dream.id)
