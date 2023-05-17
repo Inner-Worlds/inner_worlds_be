@@ -8,10 +8,10 @@ RSpec.describe Dream, type: :request do
       expect do
         post '/graphql', params: { query: mutation(user) }
       end.to change { Dream.count }.by(1)
-
+# binding.pry
     end
       
-    xit "returns a dream" do
+    it "returns a dream" do
       user = create(:user)
       dream = create(:dream, user: user)
       emotion = create(:emotion)
@@ -26,27 +26,28 @@ RSpec.describe Dream, type: :request do
 
 
       expect(data).to include(
-        "userId" => user.id.to_s,
-        "id" => dream.id.to_s,
-        "dreamDate" => dream.dream_date.to_s,
-        "title" => dream.title,
-        "description" => dream.description,
-        "emotions" => [
-            "name" => emotion.name
+        :id => be_present,
+        :dreamDate => "2023-05-10T00:00:00Z",
+        :title => "My Dream Label",
+        :description => "A detailed description of my dream.",
+        :emotions => [
+            {:name => "Excitement"},
+            {:name => "Happiness"},
           ],
-        "tags" => [
-            "name" => tag.name
+        :tags => [
+            {:name => "Adventure"},
+            {:name => "Mystery"},
           ],
-        "lucidity" => dream.lucidity
+        :lucidity => 4,
       )
     end
   end
 
-  def mutation(user_id)
+  def mutation(user)
     <<~GQL
     mutation {
       createDream(input: {
-        userId: "#{user_id}",
+        userId: "#{user.id}",
         dreamDate: "2023-05-10",
         title: "My Dream Label",
         description: "A detailed description of my dream.",
