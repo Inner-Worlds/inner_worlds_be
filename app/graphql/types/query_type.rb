@@ -10,7 +10,12 @@ module Types
     end
   
     def user(id:)
-      User.find(id)
+      user = User.find_by(id: id)
+      if user
+        user
+      else
+        raise GraphQL::ExecutionError, "User not found"
+      end
     end
   end
 end

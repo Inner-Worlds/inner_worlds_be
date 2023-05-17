@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Dream < ApplicationRecord
   validates_presence_of :description,
                         :title,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Emotion < ApplicationRecord
   validates_presence_of :name
 
