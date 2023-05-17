@@ -18,7 +18,7 @@ module Types
       end
     end
 
-    field :emotion, Types::EmotionType, null: false
+    field :all_emotions, Types::EmotionType, null: false
 
     def all_emotions
       Emotion.all
