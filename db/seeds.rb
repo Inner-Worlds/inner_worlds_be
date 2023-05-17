@@ -1,4 +1,5 @@
 ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations'
   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
 end
 
@@ -16,4 +17,32 @@ end
       DreamTag.create(tag_id: tag.id, dream_id: dream.id)
     end
   end
+end
+
+default_emotions = [
+  "Happy",
+  "Sad",
+  "Angry",
+  "Scared",
+  "Excited",
+  "Confused",
+  "Relaxed",
+  "Hopeful",
+  "Content",
+  "Anxious",
+  "Curious",
+  "Overwhelmed",
+  "Frustrated",
+  "Nostalgic",
+  "Empathetic",
+  "Contentment",
+  "Enthusiasm",
+  "Boredom",
+  "Inspired",
+  "Grateful",
+  "Miserable"
+]
+
+default_emotions.each do |emotion|
+  Emotion.create(name: emotion, default: true)
 end

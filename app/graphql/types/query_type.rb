@@ -8,7 +8,7 @@ module Types
     field :user, Types::UserType, null: false do 
       argument :id, ID, required: true
     end
-  
+    
     def user(id:)
       user = User.find_by(id: id)
       if user
@@ -17,11 +17,11 @@ module Types
         raise GraphQL::ExecutionError, "User not found"
       end
     end
+    
+    field :default_emotions, [Types::EmotionType], null: false
 
-    field :all_emotions, Types::EmotionType, null: false
-
-    def all_emotions
-      Emotion.all
+    def default_emotions
+      Emotion.default_emotion
     end
   end
 end
