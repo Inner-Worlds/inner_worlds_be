@@ -6,5 +6,6 @@ module Types
     field :add_tag, mutation: Mutations::AddTag
     field :delete_dream, mutation: Mutations::DeleteDream
     field :delete_dream_tag, mutation: Mutations::DeleteDreamTag
+    field :delete_dream_emotion, mutation: Mutations::DeleteDreamEmotion
   end
 end
