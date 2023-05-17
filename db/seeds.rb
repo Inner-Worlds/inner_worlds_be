@@ -1,4 +1,5 @@
 ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations'
   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
 end
 
@@ -16,4 +17,39 @@ end
       DreamTag.create(tag_id: tag.id, dream_id: dream.id)
     end
   end
+end
+
+default_tags = [
+  "Flying",
+  "Falling",
+  "Chased",
+  "Lost",
+  "Late",
+  "Losing teeth",
+  "Naked",
+  "School",
+  "Work",
+  "Car accident",
+  "Fire",
+  "Water",
+  "Tornadoes",
+  "Meeting someone famous",
+  "Deceased loved one",
+  "Strange place",
+  "Nature",
+  "Science Fiction",
+  "Travel",
+  "Relationships",
+  "Self-discovery",
+  "Nightmares",
+  "Night Terrors",
+  "Food",
+  "Music",
+  "Supernatural",
+  "Sleep Paralysis",
+  "Dreams within Dreams"
+]
+
+default_tags.each do |tag|
+  Tag.create(name: tag, default: true)
 end
