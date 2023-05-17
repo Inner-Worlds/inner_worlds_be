@@ -17,5 +17,11 @@ module Types
         raise GraphQL::ExecutionError, "User not found"
       end
     end
+
+    field :emotion, Types::EmotionType, null: false
+
+    def all_emotions
+      Emotion.all
+    end
   end
 end
