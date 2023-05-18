@@ -27,7 +27,7 @@ RSpec.describe Dream, type: :request do
 
       expect(data).to include(
         :id => be_present,
-        :dreamDate => "2023-05-10T00:00:00Z",
+        :dreamDate => "5/10/2023",
         :title => "My Dream Label",
         :description => "A detailed description of my dream.",
         :emotions => [
