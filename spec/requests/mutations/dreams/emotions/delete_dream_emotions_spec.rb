@@ -19,7 +19,7 @@ RSpec.describe DreamEmotion, type: :request do
         
         expect(DreamEmotion.count).to eq(0)
         expect(deleted_dream_emotion.keys).to eq([:id])
-        expect(deleted_dream_emotion[:id].to_i).to eq(emotion.id)
+        expect(deleted_dream_emotion[:id].to_i).to eq(dream.id)
       end
     end
   end

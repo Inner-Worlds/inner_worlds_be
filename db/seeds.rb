@@ -19,6 +19,34 @@ end
   end
 end
 
+default_emotions = [
+  "Happy",
+  "Sad",
+  "Angry",
+  "Scared",
+  "Excited",
+  "Confused",
+  "Relaxed",
+  "Hopeful",
+  "Content",
+  "Anxious",
+  "Curious",
+  "Overwhelmed",
+  "Frustrated",
+  "Nostalgic",
+  "Empathetic",
+  "Contentment",
+  "Enthusiasm",
+  "Boredom",
+  "Inspired",
+  "Grateful",
+  "Miserable"
+]
+
+default_emotions.each do |emotion|
+  Emotion.create(name: emotion, default: true)
+end
+  
 default_tags = [
   "Flying",
   "Falling",
