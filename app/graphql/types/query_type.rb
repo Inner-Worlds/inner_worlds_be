@@ -23,5 +23,11 @@ module Types
     def default_emotions
       Emotion.default_emotion
     end
+
+    field :default_tags, [Types::TagType], null: false
+
+    def default_tags
+      Tag.default_tags
+    end
   end
 end

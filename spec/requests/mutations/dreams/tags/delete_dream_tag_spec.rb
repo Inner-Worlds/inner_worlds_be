@@ -19,7 +19,7 @@ RSpec.describe DreamTag, type: :request do
 
       expect(DreamTag.count).to eq(0)
       expect(deleted_dream_tag.keys).to eq([:id])
-      expect(deleted_dream_tag[:id].to_i).to eq(tag.id)
+      expect(deleted_dream_tag[:id].to_i).to eq(dream_tag.id)
     end
    end
   end
