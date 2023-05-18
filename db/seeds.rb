@@ -1,5 +1,6 @@
 ActiveRecord::Base.connection.tables.each do |table|
   next if table == 'schema_migrations'
+  next if table == 'ar_internal_metadata'
   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
 end
 
