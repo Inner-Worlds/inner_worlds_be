@@ -7,11 +7,13 @@ RSpec.describe User, type: :request do
     describe "when successful" do 
       it 'successfully returns one user' do
         user = create(:user)
-        dream = create(:dream, user:)
-        emotion = create(:emotion)
-        create(:dream_emotion, emotion:, dream:)
-        tag = create(:tag)
-        create(:dream_tag, tag:, dream:)
+        5.times do
+          dream = create(:dream, user:)
+          emotion = create(:emotion)
+          create(:dream_emotion, emotion:, dream:)
+          tag = create(:tag)
+          create(:dream_tag, tag:, dream:)
+        end
 
         post '/graphql', params: { query: query_user(user.id) }
 
