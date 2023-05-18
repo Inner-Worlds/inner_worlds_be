@@ -15,4 +15,17 @@ RSpec.describe User, type: :model do
     it { should have_many(:emotions).through(:dream_emotions) }
     it { should have_many(:tags).through(:dream_tags) }
   end
+
+
+  describe '#sorted_dreams_date_asc' do
+    it 'should return an array of dreams in order by date from oldest to newest' do
+      user = create(:user)
+      dream1 = create(:dream, dream_date: DateTime.new(2023), user: user)
+      dream2 = create(:dream, dream_date: DateTime.new(1999), user: user)
+      dream3 = create(:dream, dream_date: DateTime.new(2001), user: user)
+      dream4 = create(:dream, dream_date: DateTime.new(2003), user: user)
+      dream5 = create(:dream, dream_date: DateTime.new(2024), user: user)
+      expect(user.sorted_dreams_date_asc).to eq([dream2, dream3, dream4, dream1, dream5])
+    end
+  end
 end
