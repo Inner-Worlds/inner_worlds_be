@@ -13,6 +13,7 @@ RSpec.describe Emotion, type: :request do
         post '/graphql', params: { query: query_default_emotions }
 
         emotion_response = JSON.parse(response.body, symbolize_names: true)
+       
         emotion_data = emotion_response[:data][:defaultEmotions]
         expect(emotion_data).to be_an(Array)
         expect(emotion_data.count).to eq(3)
