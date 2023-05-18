@@ -9,11 +9,9 @@ module Mutations
 
     def resolve(**attributes)
       dream = Dream.find(attributes[:id])
-      if dream.update!(attributes)
-        dream
-      else
-        raise GraphQL::ExecutionError, "Dream not found"
-      end
+      dream.update!(attributes)
+      rescue ActiveRecord::RecordInvalid => exception
+      GraphQL::ExecutionError.new("Invalid input: #{exception.record.errors.full_messages.join(', ')}")
     end
   end
 end
