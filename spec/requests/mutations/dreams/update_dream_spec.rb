@@ -26,7 +26,6 @@ RSpec.describe Dream, type: :request do
 
         expect(updated_dream[:lucidity]).to_not eq(@dream.lucidity)
         expect(updated_dream[:lucidity]).to eq(4)
-
       end
 
       it "can update part of a dream" do 
@@ -47,6 +46,7 @@ RSpec.describe Dream, type: :request do
     describe "When Unsuccessful" do 
       it "returns an error if the dream is updated with incorrect data types" do 
         post "/graphql", params: { query: dream_mutation(id: @dream.id, description: "", title: "", lucidity: @dream.lucidity) }
+        
         error_response = JSON.parse(response.body, symbolize_names: true)
 
         expect(error_response).to have_key(:errors)

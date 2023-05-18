@@ -8,8 +8,9 @@ module Mutations
     type Types::DreamType
 
     def resolve(**attributes)
-      dream = Dream.find(attributes[:id])
+      dream = Dream.find(attributes[:id].to_i)
       dream.update!(attributes)
+      dream
       rescue ActiveRecord::RecordInvalid => exception
       GraphQL::ExecutionError.new("Invalid input: #{exception.record.errors.full_messages.join(', ')}")
     end
