@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Dream, type: :request do
-  describe 'Get one user' do
+  describe 'Delete a Dream' do
     it 'can delete a dream' do
       user = create(:user)
       dream = create(:dream, user:)
