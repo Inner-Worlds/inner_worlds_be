@@ -1,21 +1,9 @@
-DreamEmotion.delete_all
-DreamTag.delete_all
-Tag.delete_all
-Emotion.delete_all
-Dream.delete_all
-User.delete_all
+ActiveRecord::Base.connection.tables.each do |table|
+  next if table == 'schema_migrations'
+  next if table == 'ar_internal_metadata'
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
+end
 
-
-
-# frozen_string_literal: true
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 100.times do
   user = User.create(name: Faker::TvShows::VentureBros.character, email: Faker::Internet.email)
   3.times do
@@ -30,4 +18,67 @@ User.delete_all
       DreamTag.create(tag_id: tag.id, dream_id: dream.id)
     end
   end
+end
+
+default_emotions = [
+  "Happy",
+  "Sad",
+  "Angry",
+  "Scared",
+  "Excited",
+  "Confused",
+  "Relaxed",
+  "Hopeful",
+  "Content",
+  "Anxious",
+  "Curious",
+  "Overwhelmed",
+  "Frustrated",
+  "Nostalgic",
+  "Empathetic",
+  "Contentment",
+  "Enthusiasm",
+  "Boredom",
+  "Inspired",
+  "Grateful",
+  "Miserable"
+]
+
+default_emotions.each do |emotion|
+  Emotion.create(name: emotion, default: true)
+end
+  
+default_tags = [
+  "Flying",
+  "Falling",
+  "Chased",
+  "Lost",
+  "Late",
+  "Losing teeth",
+  "Naked",
+  "School",
+  "Work",
+  "Car accident",
+  "Fire",
+  "Water",
+  "Tornadoes",
+  "Meeting someone famous",
+  "Deceased loved one",
+  "Strange place",
+  "Nature",
+  "Science Fiction",
+  "Travel",
+  "Relationships",
+  "Self-discovery",
+  "Nightmares",
+  "Night Terrors",
+  "Food",
+  "Music",
+  "Supernatural",
+  "Sleep Paralysis",
+  "Dreams within Dreams"
+]
+
+default_tags.each do |tag|
+  Tag.create(name: tag, default: true)
 end

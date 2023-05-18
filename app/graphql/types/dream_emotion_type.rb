@@ -3,6 +3,8 @@
 module Types
   class DreamEmotionType < Types::BaseObject
     field :id, ID, null: false
+    field :dream, Types::DreamType, null: false
+    field :emotion, Types::EmotionType, null: false
     field :emotion_id, Integer, null: false
     field :dream_id, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
