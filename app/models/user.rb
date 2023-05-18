@@ -14,6 +14,8 @@ class User < ApplicationRecord
     dreams.order(:dream_date)
   end
 
+
+  #ALL OF THE BELOW ARE TODO:
   def current_streak
     7
   end
