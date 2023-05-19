@@ -16,6 +16,12 @@ class User < ApplicationRecord
 
 
   #ALL OF THE BELOW ARE TODO:
+  #I have filled them with the correct data types
+  #to test whether the path works
+  #and to give you a template
+  #delete this message when the below is complete
+  #--Weston
+  
   def current_streak
     7
   end
