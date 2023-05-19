@@ -13,4 +13,45 @@ class User < ApplicationRecord
   def sorted_dreams_date_asc
     dreams.order(:dream_date)
   end
+
+
+  #ALL OF THE BELOW ARE TODO:
+  #I have filled them with the correct data types
+  #to test whether the path works
+  #and to give you a template
+  #delete this message when the below is complete
+  #--Weston
+  
+  def current_streak
+    7
+  end
+
+  def longest_streak
+    12
+  end
+
+  def dreams_this_month 
+    20
+  end
+
+  def dreams_this_week
+    5
+  end
+
+  def total_dreams
+    100
+  end
+
+  def average_lucidity
+    2.5
+  end
+
+  def top_5_emotions
+    [{name: "Angry", frequency: 12, percent: 20.1}, {name: "Happy", frequency: 12, percent: 20.1}, {name: "Joyful", frequency: 12, percent: 20.1}, {name: "Anxious", frequency: 12, percent: 20.1}, {name: "Weird", frequency: 12, percent: 20.1}]
+  end
+
+  def top_5_tags 
+    [{name: "Angry", frequency: 12, percent: 20.1}, {name: "Happy", frequency: 12, percent: 20.1}, {name: "Joyful", frequency: 12, percent: 20.1}, {name: "Anxious", frequency: 12, percent: 20.1}, {name: "Weird", frequency: 12, percent: 20.1}]
+  end
+
 end
