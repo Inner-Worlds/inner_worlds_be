@@ -76,11 +76,62 @@ RSpec.describe User, type: :model do
   end
 
   describe '#top_5_tags' do
-    xit 'should return a hash of hashes of the top 5 tag names with frequency and percent of whole' do
-      expect(user.top_5_tags).to be_an(Array)
-      expect(user.top_5_emotions.sample).to be_a(Hash)
-      expect(user.top_5_emotions.sample.keys).to contain_exactly(:name, :frequency, :percent)
-      expect(user.top_5_emotions.size).to eq(5)
+    context 'for each user with dreams' do
+      it 'should return an array of hashes of the top 5 tag names with frequency and percent of whole' do
+        user_2 = create(:user)
+        dream1 = create(:dream, user: user_2)
+        dream2 = create(:dream, user: user_2)
+        dream3 = create(:dream, user: user_2)
+        dream4 = create(:dream, user: user_2)
+
+        tag1 = create(:tag, name: 'happy')
+        tag2 = create(:tag, name: 'sad')
+        tag3 = create(:tag, name: 'angry')
+        tag4 = create(:tag, name: 'melancholy')
+        tag5 = create(:tag, name: 'somber')
+        tag6 = create(:tag, name: 'joyful')
+        tag7 = create(:tag, name: 'anxious')
+
+        DreamTag.create(dream: dream1, tag: tag1)
+        DreamTag.create(dream: dream1, tag: tag2)
+        DreamTag.create(dream: dream1, tag: tag3)
+
+        DreamTag.create(dream: dream2, tag: tag1)
+        DreamTag.create(dream: dream2, tag: tag5)
+
+        DreamTag.create(dream: dream3, tag: tag1)
+        DreamTag.create(dream: dream3, tag: tag2)
+        DreamTag.create(dream: dream3, tag: tag4)
+
+        DreamTag.create(dream: dream4, tag: tag1)
+        DreamTag.create(dream: dream4, tag: tag2)
+        DreamTag.create(dream: dream4, tag: tag3)
+
+        user_3 = create(:user)
+        dream5 = create(:dream, user: user_3)
+        dream6 = create(:dream, user: user_3)
+        dream7 = create(:dream, user: user_3)
+
+        DreamTag.create(dream: dream5, tag: tag1)
+        DreamTag.create(dream: dream5, tag: tag2)
+
+        DreamTag.create(dream: dream6, tag: tag1)
+        DreamTag.create(dream: dream6, tag: tag2)
+
+        DreamTag.create(dream: dream7, tag: tag1)
+        DreamTag.create(dream: dream7, tag: tag3)
+
+        expect(user_2.top_5_tags).to be_an(Array)
+        expect(user_2.top_5_tags.sample).to be_a(Hash)
+        expect(user_2.top_5_tags.sample.keys).to contain_exactly(:name, :frequency, :percent)
+        expect(user_2.top_5_tags.size).to eq(5)
+        expect(user_2.top_5_tags).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "melancholy", frequency: 1, percent: 25.0}, {name: "somber", frequency: 1, percent: 25.0}])
+        expect(user_2.top_5_tags.sample[:name]).to_not include(tag6.name, tag7.name)
+
+        expect(user_3.top_5_tags.size).to eq(3)
+        expect(user_3.top_5_tags).to eq([{name: "happy", frequency: 3, percent: 100.0}, {name: "sad", frequency: 2, percent: 66.67}, {name: "angry", frequency: 1, percent: 33.33}])
+        expect(user_3.top_5_tags.sample[:name]).to_not include(tag4.name, tag5.name, tag6.name, tag7.name)
+      end
     end
   end
 end
