@@ -16,7 +16,6 @@ RSpec.describe Dream, type: :request do
         post "/graphql", params: { query: dream_mutation(id: @dream.id, title: @new_title, description: @new_description, lucidity: @new_lucidity, dream_date: @new_date) }
 
         parsed_response = JSON.parse(response.body, symbolize_names: true)
-        require 'pry'; binding.pry
         updated_dream = parsed_response[:data][:updateDream]
 
         expect(updated_dream[:title]).to_not eq(@dream.title)
@@ -27,15 +26,14 @@ RSpec.describe Dream, type: :request do
 
         expect(updated_dream[:lucidity]).to_not eq(@dream.lucidity)
         expect(updated_dream[:lucidity]).to eq(4)
-    
-        expect(updated_dream[:dreamDate]).to eq(DateTime.strptime(@new_date, '%m/%d/%Y'))
+        
+        expect(updated_dream[:dreamDate]).to eq(@new_date)
       end
 
       it "can update part of a dream" do 
-        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: @new_description, title: @dream.title, lucidity: @dream.lucidity, dream_date: @dream.dream_date) }
+        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: @new_description, title: @dream.title, lucidity: @dream.lucidity, dream_date: "1/1/2022") }
 
         update_response = JSON.parse(response.body, symbolize_names: true)
-        
         updated_dream = update_response[:data][:updateDream]
         
         expect(updated_dream[:description]).to_not eq(@dream.description)
@@ -44,13 +42,13 @@ RSpec.describe Dream, type: :request do
         expect(updated_dream[:title]).to eq(@dream.title)
         expect(updated_dream[:lucidity]).to eq(@dream.lucidity)
 
-        expect(updated_dream[:dream_date]).to eq(@dream.dream_date)
+        expect(updated_dream[:dreamDate]).to eq("1/1/2022")
       end
     end
 
     describe "When Unsuccessful" do 
       it "returns an error if the dream is updated with incorrect data types" do 
-        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: "", title: "", lucidity: @dream.lucidity, dream_date: @dream.dream_date) }
+        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: "", title: "", lucidity: @dream.lucidity, dream_date: "1/1/2022") }
         
         error_response = JSON.parse(response.body, symbolize_names: true)
 
