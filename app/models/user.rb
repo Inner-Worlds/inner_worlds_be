@@ -50,8 +50,11 @@ class User < ApplicationRecord
     [{name: "Angry", frequency: 12, percent: 20.1}, {name: "Happy", frequency: 12, percent: 20.1}, {name: "Joyful", frequency: 12, percent: 20.1}, {name: "Anxious", frequency: 12, percent: 20.1}, {name: "Weird", frequency: 12, percent: 20.1}]
   end
 
-  def top_5_tags 
-    [{name: "Angry", frequency: 12, percent: 20.1}, {name: "Happy", frequency: 12, percent: 20.1}, {name: "Joyful", frequency: 12, percent: 20.1}, {name: "Anxious", frequency: 12, percent: 20.1}, {name: "Weird", frequency: 12, percent: 20.1}]
-  end
+  def top_5_tags
+    top_tags = tags.select("tags.name, tags.id, count(tags.name) as frequency").group(:id).order("frequency desc", "tags.name").limit(5)
 
+    top_5 = top_tags.map do |tag|
+      {name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / dreams.count.to_f * 100).round(2)}
+    end
+  end
 end
