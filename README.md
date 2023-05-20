@@ -33,6 +33,9 @@
       </ul>
     </li>
     <li><a href="#schema">Inner Worlds Schema</a></li>
+    <ul>
+        <li><a href="#testing">Testing</a></li>
+    </ul>
     <li><a href="#endpoint">Endpoint Details</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#inner">Inner Worlds Team</a></li>
@@ -57,15 +60,6 @@ The learning goals for this project were;
 * Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
 We hope your experience is out of this world!
-
-
-### Inception - Diagramming and Brainstorming
-
-* Whenever I get assigned a project, I like to start with some brain-storming and diagramming. It helps me get an eagle's eye view of the problems I'm trying to solve.
-
-![brainstorm](https://user-images.githubusercontent.com/116703107/234486110-948632be-f898-4613-b249-3d878e4428c1.png)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ### Built With
@@ -124,7 +118,7 @@ _Follow the steps below to install and set up this app._
 
 
 <!-- Testing -->
-## Testing
+### Testing
 
 * This project utilizes RSpec testing
 * After cloning this repo and following the steps above to install all necessary gems and API keys:
