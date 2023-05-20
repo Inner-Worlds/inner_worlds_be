@@ -91,7 +91,7 @@ _Follow the steps below to install and set up this app._
 
 1. Clone this Repository
    ```sh
-   git clone https://github.com/Bobsters986/psydiary_back_end
+   git clone https://github.com/Inner-Worlds/inner_worlds_be
    ```
 2. In your terminal, run the following commands;
     ```sh
