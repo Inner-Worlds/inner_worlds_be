@@ -8,7 +8,7 @@ RSpec.describe Dream, type: :request do
       @new_title = "Help! I've fallen and I can't get up!"
       @new_description = "Clap on! Clap off!"
       @new_lucidity = 4
-      @new_date = "2023/05/28"
+      @new_date = "2023-05-28"
     end
     describe "When Successful" do
       it "can update a dream" do 
