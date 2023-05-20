@@ -20,6 +20,29 @@ RSpec.describe User, type: :request do
         @tag6 = create(:tag, name: 'joyful')
         @tag7 = create(:tag, name: 'anxious')
 
+        @emotion1 = create(:emotion, name: 'joyous')
+        @emotion2 = create(:emotion, name: 'upset')
+        @emotion3 = create(:emotion, name: 'mad')
+        @emotion4 = create(:emotion, name: 'anxiety')
+        @emotion5 = create(:emotion, name: 'scared')
+        @emotion6 = create(:emotion, name: 'guilty')
+        @emotion7 = create(:emotion, name: 'embarrassed')
+
+        DreamEmotion.create(dream: @dream1, emotion: @emotion1)
+        DreamEmotion.create(dream: @dream1, emotion: @emotion2)
+        DreamEmotion.create(dream: @dream1, emotion: @emotion3)
+
+        DreamEmotion.create(dream: @dream2, emotion: @emotion1)
+        DreamEmotion.create(dream: @dream2, emotion: @emotion5)
+
+        DreamEmotion.create(dream: @dream3, emotion: @emotion1)
+        DreamEmotion.create(dream: @dream3, emotion: @emotion2)
+        DreamEmotion.create(dream: @dream3, emotion: @emotion4)
+
+        DreamEmotion.create(dream: @dream4, emotion: @emotion1)
+        DreamEmotion.create(dream: @dream4, emotion: @emotion2)
+        DreamEmotion.create(dream: @dream4, emotion: @emotion3)
+
         DreamTag.create(dream: @dream1, tag: @tag1)
         DreamTag.create(dream: @dream1, tag: @tag2)
         DreamTag.create(dream: @dream1, tag: @tag3)
@@ -60,6 +83,32 @@ RSpec.describe User, type: :request do
         expect(user_data[:top5Tags].first[:name]).to eq(@tag1.name)
         expect(user_data[:top5Tags].first[:frequency]).to eq(4)
         expect(user_data[:top5Tags].first[:percent]).to eq(100.0)
+      end
+
+      it "successfully returns a user's top 5 emotion stats" do
+        post '/graphql', params: { query: query_user_stats(@user.id) }
+
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_data = user_response[:data][:user][:stats]
+
+        expect(user_data).to have_key(:top5Emotions)
+        expect(user_data[:top5Emotions]).to be_an(Array)
+        expect(user_data[:top5Emotions].count).to eq(5)
+
+        user_data[:top5Emotions].each do |tag|
+          expect(tag).to have_key(:name)
+          expect(tag[:name]).to be_a(String)
+
+          expect(tag).to have_key(:frequency)
+          expect(tag[:frequency]).to be_an(Integer)
+
+          expect(tag).to have_key(:percent)
+          expect(tag[:percent]).to be_a(Float)
+        end
+
+        expect(user_data[:top5Emotions].first[:name]).to eq(@emotion1.name)
+        expect(user_data[:top5Emotions].first[:frequency]).to eq(4)
+        expect(user_data[:top5Emotions].first[:percent]).to eq(100.0)
       end
     end
   end
