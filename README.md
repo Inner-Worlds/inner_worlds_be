@@ -3,12 +3,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/116703107/234485025-fb4e2b81-17cb-4cda-8699-2787664b504f.png" height="200">
+    <img src="https://user-images.githubusercontent.com/116703107/239712974-64aaeb60-037c-4879-a723-93eea5a59b60.png" height="200">
 <br>
-  <h3 align="center"> Road Trip Advisor </h3>
+  <h3 align="center"> Inner Worlds Back End </h3>
 <br>
   <p align="center">
-    Mod 3 Final Project
+    Mod 4 Capstone Project
     <br />
   </p>
 </div>
@@ -32,10 +32,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#schema">Road Trip Advisor Schema</a></li>
+    <li><a href="#schema">Inner Worlds Schema</a></li>
     <li><a href="#endpoint">Endpoint Details</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#inner">Inner Worlds Team</a></li>
     <li><a href="#acknowledgements">Acknowlegdements</a></li>
   </ol>
 </details>
@@ -56,6 +56,8 @@ The learning goals for this project were;
 * Build applications that execute in development, test, CI, and production environments
 * Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
+We hope your experience is out of this world!
+
 
 ### Inception - Diagramming and Brainstorming
 
@@ -68,7 +70,7 @@ The learning goals for this project were;
 
 ### Built With
 
-[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![Puma]][Puma-url][![bcrypt]][bcrypt-url][![Faraday]][Faraday-url][![Figaro]][Figaro-url][![JSON-Serializer]][JSON-Serializer-url][![Capybara]][Capybara-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![RSpec]][RSpec-url][![VCR]][VCR-url][![Web-mock]][Web-mock-url]
+[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![Puma]][Puma-url][![Capybara]][Capybara-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![RSpec]][RSpec-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -93,18 +95,17 @@ The learning goals for this project were;
 
 _Follow the steps below to install and set up this app._
 
-1. NEEDS TWO API Keys. Sign up for your free API Keys at [MapQuest’s Geocoding API](https://developer.mapquest.com/documentation/geocoding-api/) and [Weather API](https://www.weatherapi.com/)
-2. Clone this Repository
+1. Clone this Repository
    ```sh
    git clone https://github.com/Bobsters986/psydiary_back_end
    ```
-3. In your terminal, run the following commands;
+2. In your terminal, run the following commands;
     ```sh
     bundle install
     'rails generate graphql:install'
     rails db:{drop,create,migrate,seed}
     ```
-4. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
+3. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -176,14 +177,76 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- CONTACT -->
-## Contact
+## Inner Worlds Team
 
-<div align="center">
-  <img src="https://avatars.githubusercontent.com/Bobsters986" alt="Profile" height="150" width="150">
-  <p>Bobby Luly</p>
-  <a href="https://github.com/Bobsters986">GitHub</a><br>
-  <a href="https://www.linkedin.com/in/bobbyy-luly-217653260/">LinkedIn</a>
-</div>
+### Back End
+<table>
+  <tr>
+    <td><img src="https://avatars.githubusercontent.com/jadekstewart3"></td>
+    <td><img src="https://avatars.githubusercontent.com/Bobsters986"></td>
+    <td><img src="https://avatars.githubusercontent.com/kassandraleyba"></td>
+    <td><img src="https://avatars.githubusercontent.com/sandfortw"></td>
+    <td><img src="https://avatars.githubusercontent.com/sgwalker327"></td>
+  </tr>
+  <tr>
+    <td>Jade Stewart</td>
+    <td>Bobby Luly</td>
+    <td>Kassandra Leyba</td>
+    <td>Weston Sandfort</td>
+    <td>Sam Walker</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/jadekstewart3">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/jadestewart-software-engineer/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/Bobsters986">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/bobbyy-luly-217653260/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/kassandraleyba">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/kassandra-leyba/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/sandfortw">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/westonsandfort/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/sgwalker327">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/sam-walker-95a49630/">LinkedIn</a>
+    </td>
+  </tr>
+</table>
+
+### Front End
+
+<table>
+  <tr>
+    <td><img src="https://avatars.githubusercontent.com/LSeward0421"></td>
+    <td><img src="https://avatars.githubusercontent.com/danielcurtin"></td>
+    <td><img src="https://avatars.githubusercontent.com/Lexyful"></td>
+  </tr>
+  <tr>
+    <td>Lauren Seward</td>
+    <td>Daniel Curtin</td>
+    <td>Lexye Jordan</td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/LSeward0421">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/l-seward/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/danielcurtin">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/daniel-curtin-39954a192/">LinkedIn</a>
+    </td>
+    <td>
+      <a href="https://github.com/Lexyful">GitHub</a><br>
+      <a href="https://www.linkedin.com/in/lexye-jordan-175879260/">LinkedIn</a>
+    </td>
+  </tr>
+</table>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
