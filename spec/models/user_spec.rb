@@ -54,15 +54,23 @@ RSpec.describe User, type: :model do
   end
 
   describe '#total_dreams' do
-    xit 'should return the total dreams recorded by a user' do
+    it 'should return the total dreams recorded by a user' do
+      user = create(:user)
+      create_list(:dream, 5, user: user)
+  
       expect(user.total_dreams).to be_an(Integer)
+      expect(user.total_dreams).to eq(5)
+    end
+
+    it 'should return 0 when the user has no recorded dreams' do
+      user = create(:user)
+
+      expect(user.total_dreams).to eq(0)
     end
   end
 
   describe '#average_lucidity' do
-    xit 'should return average lucidity across all recorded dreams' do
-      expect(user.average_lucidity).to be_a(Float) #Float should probably terminate at 1 or 2 decimal places
-    end
+
   end
 
   describe '#top_5_emotions' do

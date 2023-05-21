@@ -39,11 +39,11 @@ class User < ApplicationRecord
   end
 
   def total_dreams
-    100
+    dreams.count
   end
 
   def average_lucidity
-    2.5
+    
   end
 
   def top_5_emotions
