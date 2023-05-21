@@ -47,14 +47,18 @@ class User < ApplicationRecord
   end
 
   def top_5_emotions
-    [{name: "Angry", frequency: 12, percent: 20.1}, {name: "Happy", frequency: 12, percent: 20.1}, {name: "Joyful", frequency: 12, percent: 20.1}, {name: "Anxious", frequency: 12, percent: 20.1}, {name: "Weird", frequency: 12, percent: 20.1}]
+    top_emotions = emotions.select("emotions.name, emotions.id, count(emotions.name) as frequency").group(:id).order("frequency desc", "emotions.name").limit(5)
+
+    top_5 = top_emotions.map do |emotion|
+      { name: emotion.name, frequency: emotion.frequency, percent: (emotion.frequency.to_f/ dreams.count.to_f * 100).round(2) }
+    end
   end
 
   def top_5_tags
     top_tags = tags.select("tags.name, tags.id, count(tags.name) as frequency").group(:id).order("frequency desc", "tags.name").limit(5)
 
     top_5 = top_tags.map do |tag|
-      {name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / dreams.count.to_f * 100).round(2)}
+      { name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / dreams.count.to_f * 100).round(2) }
     end
   end
 end

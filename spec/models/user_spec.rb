@@ -66,12 +66,62 @@ RSpec.describe User, type: :model do
   end
 
   describe '#top_5_emotions' do
-    xit 'should return an array of hashes of the top 5 emotion names with frequency and percent of whole' do
-      expect(user.top_5_emotions).to be_an(Array)
-      expect(user.top_5_emotions.sample).to be_a(Hash)
-      expect(user.top_5_emotions.sample.keys).to contain_exactly(:name, :frequency, :percent)
-      expect(user.top_5_emotions.size).to eq(5)
-      
+   context 'for each user with dreams' do
+      it 'should return an array of hashes of the top 5 emotion names with frequency and percent of whole' do
+        user_1 = create(:user)
+        dream1 = create(:dream, user: user_1)
+        dream2 = create(:dream, user: user_1)
+        dream3 = create(:dream, user: user_1)
+        dream4 = create(:dream, user: user_1)
+
+        emotion1 = create(:emotion, name: 'happy')
+        emotion2 = create(:emotion, name: 'sad')
+        emotion3 = create(:emotion, name: 'angry')
+        emotion4 = create(:emotion, name: 'guilty')
+        emotion5 = create(:emotion, name: 'love')
+        emotion6 = create(:emotion, name: 'joyful')
+        emotion7 = create(:emotion, name: 'anxious')
+
+        DreamEmotion.create(dream: dream1, emotion: emotion1)
+        DreamEmotion.create(dream: dream1, emotion: emotion2)
+        DreamEmotion.create(dream: dream1, emotion: emotion3)
+
+        DreamEmotion.create(dream: dream2, emotion: emotion1)
+        DreamEmotion.create(dream: dream2, emotion: emotion5)
+
+        DreamEmotion.create(dream: dream3, emotion: emotion1)
+        DreamEmotion.create(dream: dream3, emotion: emotion2)
+        DreamEmotion.create(dream: dream3, emotion: emotion4)
+
+        DreamEmotion.create(dream: dream4, emotion: emotion1)
+        DreamEmotion.create(dream: dream4, emotion: emotion2)
+        DreamEmotion.create(dream: dream4, emotion: emotion3)
+
+        user_2 = create(:user)
+        dream5 = create(:dream, user: user_2)
+        dream6 = create(:dream, user: user_2)
+        dream7 = create(:dream, user: user_2)
+
+        DreamEmotion.create(dream: dream5, emotion: emotion1)
+        DreamEmotion.create(dream: dream5, emotion: emotion2)
+
+        DreamEmotion.create(dream: dream6, emotion: emotion1)
+        DreamEmotion.create(dream: dream6, emotion: emotion2)
+
+        DreamEmotion.create(dream: dream7, emotion: emotion1)
+        DreamEmotion.create(dream: dream7, emotion: emotion3)
+
+        expect(user_1.top_5_emotions).to be_an(Array)
+        expect(user_1.top_5_emotions.sample).to be_a(Hash)
+        expect(user_1.top_5_emotions.sample.keys).to contain_exactly(:name, :frequency, :percent)
+        expect(user_1.top_5_emotions.size).to eq(5)
+        expect(user_1.top_5_emotions).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "guilty", frequency: 1, percent: 25.0}, {name: "love", frequency: 1, percent: 25.0}])
+        expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion6.name, emotion7.name)
+
+        expect(user_1.top_5_emotions.size).to eq(5)
+        expect(user_1.top_5_emotions).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "guilty", frequency: 1, percent: 25.0}, {name: "love", frequency: 1, percent: 25.0}])
+        expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion6.name, emotion7.name)
+      end
     end
   end
 
