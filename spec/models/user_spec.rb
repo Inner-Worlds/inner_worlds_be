@@ -120,7 +120,7 @@ RSpec.describe User, type: :model do
 
         expect(user_1.top_5_emotions.size).to eq(5)
         expect(user_1.top_5_emotions).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "guilty", frequency: 1, percent: 25.0}, {name: "love", frequency: 1, percent: 25.0}])
-        expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion4.name, emotion5.name, emotion6.name, emotion7.name)
+        expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion6.name, emotion7.name)
       end
     end
   end
