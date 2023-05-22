@@ -39,11 +39,16 @@ class User < ApplicationRecord
   end
 
   def total_dreams
-    100
+    dreams.count
   end
 
   def average_lucidity
-    2.5
+    total_dreams = dreams.count
+    sum_lucidity = dreams.sum(:lucidity)
+    
+    average = sum_lucidity.to_f / total_dreams
+
+    average.round(2)
   end
 
   def top_5_emotions
