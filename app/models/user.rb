@@ -38,7 +38,9 @@ class User < ApplicationRecord
   end
 
   def dreams_this_week
-    5
+    week_start_date = Date.today.beginning_of_week(:sunday)  # Adjust the start of the week based on your desired configuration
+    week_end_date = week_start_date + 6
+    dreams.where(dream_date: week_start_date..week_end_date).count
   end
 
   def total_dreams
