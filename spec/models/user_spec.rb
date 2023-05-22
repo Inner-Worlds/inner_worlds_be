@@ -228,4 +228,23 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  
+  describe '#dreams_this_week' do
+    context 'for each user with dreams' do
+      it 'should return the number of dreams recorded this week' do
+        user = create(:user)
+        dream1 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 01))
+        dream2 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 22))
+        dream3 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 23))
+        dream4 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 24))
+        dream5 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 25))
+        dream6 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 27))
+        dream7 = create(:dream, user: user, dream_date: DateTime.new(2023, 06, 02))
+        dream8 = create(:dream, user: user, dream_date: DateTime.new(2023, 04, 30))
+        
+
+        expect(user.dreams_this_week).to eq(5)
+      end
+    end
+  end
 end
