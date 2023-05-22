@@ -226,9 +226,15 @@ RSpec.describe User, type: :model do
 
         expect(user.dreams_this_month).to eq(6)
       end
+
+      it 'should return 0 if there are no dreams this month' do
+        user = create(:user)
+
+        expect(user.dreams_this_month).to eq(0)
+      end
     end
   end
-  
+
   describe '#dreams_this_week' do
     context 'for each user with dreams' do
       it 'should return the number of dreams recorded this week' do
@@ -244,6 +250,12 @@ RSpec.describe User, type: :model do
         
 
         expect(user.dreams_this_week).to eq(5)
+      end
+
+      it 'should return 0 if there are no dreams this week' do
+        user = create(:user)
+
+        expect(user.dreams_this_week).to eq(0)
       end
     end
   end
