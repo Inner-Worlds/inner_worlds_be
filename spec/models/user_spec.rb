@@ -184,4 +184,19 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#dreams_this_month' do
+    context 'for each user with dreams' do
+      it 'should return the number of dreams recorded this month' do
+        user = create(:user)
+        dream1 = create(:dream, user: user, , dream_date: Date.today)
+        dream1 = create(:dream, user: user)
+        dream1 = create(:dream, user: user)
+        dream1 = create(:dream, user: user)
+        dream1 = create(:dream, user: user)
+        dream1 = create(:dream, user: user)
+        dream1 = create(:dream, user: user)
+      end
+    end
+  end
 end
