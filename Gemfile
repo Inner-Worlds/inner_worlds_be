@@ -57,8 +57,9 @@ gem 'graphiql-rails'
 gem 'graphql'
 gem 'rubocop'
 gem 'rack-cors'
-
-
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
