@@ -30,8 +30,11 @@ class User < ApplicationRecord
     12
   end
 
-  def dreams_this_month 
-    20
+  def dreams_this_month
+    current_date = Date.today
+    start_date = current_date.beginning_of_month
+    end_date = current_date.end_of_month
+    dreams.where(dream_date: start_date..end_date).count
   end
 
   def dreams_this_week
