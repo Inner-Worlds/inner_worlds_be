@@ -13,10 +13,8 @@ RSpec.describe TopicService, type: :service do
         VCR.use_cassette("services/get_topics") do
           service = TopicService.new(@payload)
           response = service.get_topics
-          expect(response.keys).to contain_exactly(:keyword, :topic, :version, :author, :email, :result_code, :result_msg)
-          expect(response[:keyword].keys).to include(:dog, :balloon, :teeth)
-          expect(response[:keyword][:dog]).to be_an(Integer)
-          expect(response[:topic][:animal]).to be_a(Float)
+          expect(response).to be_an(Array)
+          expect(response).to contain_exactly(:dog, :balloon, :teeth, :animal)
         end
       end
     end

@@ -10,7 +10,8 @@ class TopicService
       req.headers["X-RapidAPI-Host"] = ENV["X-RapidAPI-Host"]
       req.params["text"] = @payload
     end
-    JSON.parse(response.body, symbolize_names: true)
+    json = JSON.parse(response.body, symbolize_names: true)
+    json[:keyword].keys.first(3) << json[:topic].keys.first #First 3 keys, and first topic from the response
   end
 
 
