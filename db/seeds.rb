@@ -4,6 +4,8 @@ ActiveRecord::Base.connection.tables.each do |table|
   ActiveRecord::Base.connection.execute("TRUNCATE #{table} RESTART IDENTITY CASCADE")
 end
 
+User.create(name: "Weston", email: "sandfortw@gmail.com")
+
 100.times do
   user = User.create(name: Faker::TvShows::VentureBros.character, email: Faker::Internet.email)
   3.times do

@@ -10,8 +10,13 @@ module Mutations
 
     def resolve(**attributes)
       dream = Dream.find(attributes[:id])
-      # require 'pry'; binding.pry
-      attributes[:dream_date] = DateTime.strptime(attributes[:dream_date], '%Y-%m-%d') if attributes[:dream_date]
+      if attributes[:dream_date]
+        if attributes[:dream_date].include?("-")
+          attributes[:dream_date] = DateTime.strptime(attributes[:dream_date], '%Y-%m-%d')
+        else
+          attributes[:dream_date] = DateTime.strptime(attributes[:dream_date], '%m/%d/%Y')
+        end
+      end
       dream.update!(attributes)
       dream
     rescue ActiveRecord::RecordInvalid => exception

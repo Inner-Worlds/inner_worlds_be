@@ -30,38 +30,63 @@ RSpec.describe User, type: :model do
   end
 
   describe '#current_streak' do
-    xit 'should return the current streak for a user recording dreams' do
+    it 'should return the current streak for a user recording dreams' do
+      dream1 = create(:dream, dream_date: Date.today, user: user)
+      dream2 = create(:dream, dream_date: (Date.today - 1), user: user)
+      dream3 = create(:dream, dream_date: (Date.today - 2), user: user)
+      dream4 = create(:dream, dream_date: (Date.today - 3), user: user)
+      dream5 = create(:dream, dream_date: (DateTime.new(2024, 1, 6)), user: user)
+      expect(user.current_streak).to eq(4)
       expect(user.current_streak).to be_an(Integer)
     end
   end
 
   describe '#longest_streak' do
-    xit 'should return the longest streak for a user recording dream' do
+    it 'should return the longest streak for a user recording dream' do
+      dream1 = create(:dream, dream_date: DateTime.new(2023, 1, 1), user: user)
+      dream2 = create(:dream, dream_date: DateTime.new(2023, 1, 2), user: user)
+      dream3 = create(:dream, dream_date: DateTime.new(2023, 1, 3), user: user)
+      dream4 = create(:dream, dream_date: DateTime.new(2023, 1, 4), user: user)
+      dream5 = create(:dream, dream_date: DateTime.new(2024, 1, 6), user: user)
       expect(user.longest_streak).to be_an(Integer)
-    end
-  end
-
-  describe '#dreams_this_month' do
-    xit 'should return the total dreams that a user has recorded in the CALENDAR month' do #i.e. not the past 30 days, but since the first of the month
-      expect(user.dreams_this_month).to be_an(Integer)
-    end
-  end
-
-  describe '#dreams_this_week' do
-    xit 'should return the number of dreams the user has had this CALENDAR week' do #Sunday to Saturday, i.e. not just the past 7 days
-      expect(user.dreams_this_week).to be_an(Integer)
+      expect(user.longest_streak).to eq(4)
     end
   end
 
   describe '#total_dreams' do
-    xit 'should return the total dreams recorded by a user' do
+    it 'should return the total dreams recorded by a user' do
+      user = create(:user)
+      create_list(:dream, 5, user: user)
+  
       expect(user.total_dreams).to be_an(Integer)
+      expect(user.total_dreams).to eq(5)
+    end
+
+    it 'should return 0 when the user has no recorded dreams' do
+      user = create(:user)
+
+      expect(user.total_dreams).to eq(0)
     end
   end
 
   describe '#average_lucidity' do
-    xit 'should return average lucidity across all recorded dreams' do
-      expect(user.average_lucidity).to be_a(Float) #Float should probably terminate at 1 or 2 decimal places
+    it 'should return average lucidity across all recorded dreams' do
+      user = create(:user)
+      dream1 = create(:dream, lucidity: 3, user: user)
+      dream2 = create(:dream, lucidity: 2, user: user)
+      dream3 = create(:dream, lucidity: 4, user: user)
+  
+      average = (dream1.lucidity + dream2.lucidity + dream3.lucidity).to_f / 3
+  
+      expect(user.average_lucidity).to be_a(Float)
+      expect(user.average_lucidity).to eq(average)
+    end
+
+    it 'should return 0 when the user has dreams but all have lucidity level 0' do
+      user = create(:user)
+      create_list(:dream, 3, user: user, lucidity: 0)
+
+      expect(user.average_lucidity).to eq(0)
     end
   end
 
@@ -181,6 +206,56 @@ RSpec.describe User, type: :model do
         expect(user_3.top_5_tags.size).to eq(3)
         expect(user_3.top_5_tags).to eq([{name: "happy", frequency: 3, percent: 100.0}, {name: "sad", frequency: 2, percent: 66.67}, {name: "angry", frequency: 1, percent: 33.33}])
         expect(user_3.top_5_tags.sample[:name]).to_not include(tag4.name, tag5.name, tag6.name, tag7.name)
+      end
+    end
+  end
+
+  describe '#dreams_this_month' do
+    context 'for each user with dreams' do
+      it 'should return the number of dreams recorded this month' do
+        user = create(:user)
+        dream1 = create(:dream, user: user, dream_date: DateTime.new(2023, 02, 20))
+        dream2 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 23))
+        dream3 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 24))
+        dream4 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 25))
+        dream5 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 26))
+        dream6 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 27))
+        dream7 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 28))
+        dream8 = create(:dream, user: user, dream_date: DateTime.new(2023, 04, 30))
+        
+
+        expect(user.dreams_this_month).to eq(6)
+      end
+
+      it 'should return 0 if there are no dreams this month' do
+        user = create(:user)
+
+        expect(user.dreams_this_month).to eq(0)
+      end
+    end
+  end
+
+  describe '#dreams_this_week' do
+    context 'for each user with dreams' do
+      it 'should return the number of dreams recorded this week' do
+        user = create(:user)
+        dream1 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 01))
+        dream2 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 22))
+        dream3 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 23))
+        dream4 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 24))
+        dream5 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 25))
+        dream6 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 27))
+        dream7 = create(:dream, user: user, dream_date: DateTime.new(2023, 06, 02))
+        dream8 = create(:dream, user: user, dream_date: DateTime.new(2023, 04, 30))
+        
+
+        expect(user.dreams_this_week).to eq(5)
+      end
+
+      it 'should return 0 if there are no dreams this week' do
+        user = create(:user)
+
+        expect(user.dreams_this_week).to eq(0)
       end
     end
   end

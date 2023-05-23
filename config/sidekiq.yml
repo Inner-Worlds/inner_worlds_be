@@ -1,0 +1,9 @@
+:scheduler:
+  :schedule:
+    # Run every Monday 9:30am
+    stat_sender_worker:
+      # cron: "30 9 * * 1"
+      every: '1m'
+      class: "StatSenderWorker"
+      queue: default
+      args: -> { User.pluck(:id)}

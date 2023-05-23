@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+
   validates_presence_of :name,
                         :email
   has_many :dreams, dependent: :destroy
@@ -14,36 +15,48 @@ class User < ApplicationRecord
     dreams.order(:dream_date)
   end
 
-
-  #ALL OF THE BELOW ARE TODO:
-  #I have filled them with the correct data types
-  #to test whether the path works
-  #and to give you a template
-  #delete this message when the below is complete
-  #--Weston
-  
   def current_streak
-    7
+    streak_date = Date.today
+    streak_length = 0
+  
+    while dreams.where(dream_date: streak_date).exists?
+      streak_length += 1
+      streak_date -= 1.day
+    end
+  
+    streak_length
   end
 
   def longest_streak
-    12
+    sorted_dates = dreams.order(:dream_date).pluck(:dream_date).map(&:to_date)
+    streaks = sorted_dates.chunk_while { |date1, date2| date1.next_day == date2 }.to_a
+    longest_streak = streaks.max_by(&:length).size
   end
 
-  def dreams_this_month 
-    20
+  def dreams_this_month
+    current_date = Date.today
+    start_date = current_date.beginning_of_month
+    end_date = current_date.end_of_month
+    dreams.where(dream_date: start_date..end_date).count
   end
 
   def dreams_this_week
-    5
+    week_start_date = Date.today.beginning_of_week(:sunday)  # Adjust the start of the week based on your desired configuration
+    week_end_date = week_start_date + 6
+    dreams.where(dream_date: week_start_date..week_end_date).count
   end
 
   def total_dreams
-    100
+    dreams.count
   end
 
   def average_lucidity
-    2.5
+    total_dreams = dreams.count
+    sum_lucidity = dreams.sum(:lucidity)
+    
+    average = sum_lucidity.to_f / total_dreams
+
+    average.round(2)
   end
 
   def top_5_emotions

@@ -3,9 +3,9 @@ module Mutations
     argument :id, Integer, required: true
 
    def resolve(user_id:)
-      user = User.find(user_id)
+      user = User.find_by(id: user_id)
 
-      StatSenderJob.perform(user.id).deliver_later(wait_until: 1.week.from_now)
+      StatSenderWorker.perform_async(user.id) if user
       { success: true }
    end
   end
