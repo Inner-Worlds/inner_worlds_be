@@ -6,8 +6,8 @@ class TopicService
 
   def get_topics
     response = conn.get do |req|
-      req.headers["X-RapidAPI-Key"] = ENV["X-RapidAPI-Key"]
-      req.headers["X-RapidAPI-Host"] = ENV["X-RapidAPI-Host"]
+      req.headers["X-RapidAPI-Key"] = ENV["TOPICS_KEY"]
+      req.headers["X-RapidAPI-Host"] = ENV["TOPICS_HOST"]
       req.params["text"] = @payload
     end
     json = JSON.parse(response.body, symbolize_names: true)
