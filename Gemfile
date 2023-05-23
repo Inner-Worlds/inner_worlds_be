@@ -49,14 +49,16 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'rubocop'
 end
+
 gem 'faker'
 gem 'faraday'
-gem 'figaro'
 gem 'graphiql-rails'
 gem 'graphql'
-gem 'rubocop'
 gem 'rack-cors'
+gem 'figaro'
+
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
