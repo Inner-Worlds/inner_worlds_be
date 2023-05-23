@@ -238,7 +238,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    streakable (0.3.0)
       activerecord (>= 3.2.22)
     thor (1.2.2)
     timeout (0.3.2)
@@ -279,7 +278,6 @@ DEPENDENCIES
   rubocop
   shoulda-matchers
   simplecov
-  streakable
   tzinfo-data
   vcr
   webmock
