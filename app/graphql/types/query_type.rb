@@ -29,5 +29,21 @@ module Types
     def default_tags
       Tag.default_tags
     end
+
+    # field:user_stats, Types::UserType, null: true do
+    #   argument :user_id, ID, required: true
+    # end
+
+    # def user_stats(user_id:)
+    #   user = User.find_by(id: user_id)
+    #   return unless user
+
+      # {
+      #   user_id: user.id,
+      #   name: user.name,
+      #   email: user.email,
+      #   stats: user.stats
+      # }
+    # end
   end
 end

@@ -1,22 +1,20 @@
-require "sidekiq-scheduler"
 
 class StatSenderWorker
   include Sidekiq::Worker
 
-  def perform(user_id)
-    @user = User.find_by_id(user_id)
-    return unless @user
+  def perform
+    users = User.all
 
-    @user_stats = fetch_user_stats(@user)
-
-    UserMailer.stat_email(@user, @user_stats).deliver_now
+    users.each do |user|
+      # stats = fetch_user_stats(user)
+      UserMailer.stat_email(user).deliver_now
+    end
   end
 
   private
 
-  def fetch_user_stats(user)
-    require 'pry'; binding.pry
-    response = YourGraphqlClient.execute(UserQuery, variables: { id: user.id })
-    response.data.user
-  end
+  # def fetch_user_stats(user)
+  #   response = YourGraphqlClient.execute(UserStatsQuery, variables: { user_id: user.id })
+  #   response.data.user_stats
+  # end
 end

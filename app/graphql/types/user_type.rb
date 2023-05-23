@@ -15,7 +15,6 @@ module Types
     end
 
     def stats
-            # StatSenderWorker.perform_async(object.id)
       {
         current_streak: object.current_streak,
         longest_streak: object.longest_streak,
@@ -29,5 +28,3 @@ module Types
     end
   end
 end
-
-# StatSenderJob.perform_async(object.id)

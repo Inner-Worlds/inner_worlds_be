@@ -2,7 +2,6 @@
 
 module Types
   class MutationType < Types::BaseObject
-    field :stat_sender, mutation: Mutations::StatSender
     field :delete_user, mutation: Mutations::Users::DeleteUser
     field :add_tag, mutation: Mutations::AddTag
     field :add_emotion, mutation: Mutations::AddEmotion
@@ -11,6 +10,5 @@ module Types
     field :delete_dream_tag, mutation: Mutations::DeleteDreamTag
     field :delete_dream_emotion, mutation: Mutations::DeleteDreamEmotion
     field :update_dream, mutation: Mutations::UpdateDream
-    field :user_notifier_mailer, mutation: Mutations::StatSender
   end
 end
