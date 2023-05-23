@@ -30,26 +30,26 @@ RSpec.describe User, type: :model do
   end
 
   describe '#current_streak' do
-    xit 'should return the current streak for a user recording dreams' do
+    it 'should return the current streak for a user recording dreams' do
+      dream1 = create(:dream, dream_date: Date.today, user: user)
+      dream2 = create(:dream, dream_date: (Date.today - 1), user: user)
+      dream3 = create(:dream, dream_date: (Date.today - 2), user: user)
+      dream4 = create(:dream, dream_date: (Date.today - 3), user: user)
+      dream5 = create(:dream, dream_date: (DateTime.new(2024, 1, 6)), user: user)
+      expect(user.current_streak).to eq(4)
       expect(user.current_streak).to be_an(Integer)
     end
   end
 
   describe '#longest_streak' do
-    xit 'should return the longest streak for a user recording dream' do
+    it 'should return the longest streak for a user recording dream' do
+      dream1 = create(:dream, dream_date: DateTime.new(2023, 1, 1), user: user)
+      dream2 = create(:dream, dream_date: DateTime.new(2023, 1, 2), user: user)
+      dream3 = create(:dream, dream_date: DateTime.new(2023, 1, 3), user: user)
+      dream4 = create(:dream, dream_date: DateTime.new(2023, 1, 4), user: user)
+      dream5 = create(:dream, dream_date: DateTime.new(2024, 1, 6), user: user)
       expect(user.longest_streak).to be_an(Integer)
-    end
-  end
-
-  describe '#dreams_this_month' do
-    xit 'should return the total dreams that a user has recorded in the CALENDAR month' do #i.e. not the past 30 days, but since the first of the month
-      expect(user.dreams_this_month).to be_an(Integer)
-    end
-  end
-
-  describe '#dreams_this_week' do
-    xit 'should return the number of dreams the user has had this CALENDAR week' do #Sunday to Saturday, i.e. not just the past 7 days
-      expect(user.dreams_this_week).to be_an(Integer)
+      expect(user.longest_streak).to eq(4)
     end
   end
 

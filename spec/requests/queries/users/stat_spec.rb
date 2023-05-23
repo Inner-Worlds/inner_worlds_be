@@ -110,6 +110,16 @@ RSpec.describe User, type: :request do
         expect(user_data[:top5Emotions].first[:frequency]).to eq(4)
         expect(user_data[:top5Emotions].first[:percent]).to eq(100.0)
       end
+
+      it 'should return a value for each of the stats' do
+        post '/graphql', params: { query: query_user_stats(@user.id) }
+
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_data = user_response[:data][:user][:stats]
+        expect(user_data.keys).to contain_exactly(:currentStreak, :longestStreak, :dreamNumMonth,
+                                                  :dreamNumWeek, :totalDreams, :averageLucidity,
+                                                  :top5Emotions, :top5Tags)
+      end
     end
   end
 

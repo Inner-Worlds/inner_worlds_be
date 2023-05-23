@@ -8,7 +8,6 @@ RSpec.describe Dream, type: :request do
       expect do
         post '/graphql', params: { query: mutation(user) }
       end.to change { Dream.count }.by(1)
-# binding.pry
     end
       
     it "returns a dream" do
