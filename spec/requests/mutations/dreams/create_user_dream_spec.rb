@@ -16,12 +16,7 @@ RSpec.describe Dream, type: :request do
     it "returns a dream" do
       VCR.use_cassette("services/create_dream") do
         user = create(:user)
-        # dream = create(:dream, user: user)
-        # emotion = create(:emotion)
-        # dream_emotion = create(:dream_emotion, emotion: emotion, dream: dream)
-        # tag = create(:tag)
-        # dream_tag = create(:dream_tag, tag: tag, dream: dream)
-
+   
         post '/graphql', params: { query: mutation(user) }
 
         json = JSON.parse(response.body, symbolize_names: true)
