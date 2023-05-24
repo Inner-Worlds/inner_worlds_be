@@ -33,6 +33,26 @@ RSpec.describe Dream, type: :request do
         expect(updated_dream[:dreamDate]).to eq('5/28/2023')
         expect(updated_dream[:dreamDate]).to_not eq(@new_date)
       end
+      
+       it "can update a dream with mmm/dd/yyyy formatted date" do 
+
+        post "/graphql", params: { query: dream_mutation(id: @dream.id, title: @new_title, description: @new_description, lucidity: @new_lucidity, dream_date: "05/22/2023" ) }
+
+        parsed_response = JSON.parse(response.body, symbolize_names: true)
+        updated_dream = parsed_response[:data][:updateDream]
+
+        expect(updated_dream[:title]).to_not eq(@dream.title)
+        expect(updated_dream[:title]).to eq("Help! I've fallen and I can't get up!")
+
+        expect(updated_dream[:description]).to_not eq(@dream.description)
+        expect(updated_dream[:description]).to eq("Clap on! Clap off!")
+
+        expect(updated_dream[:lucidity]).to_not eq(@dream.lucidity)
+        expect(updated_dream[:lucidity]).to eq(4)
+        
+        expect(updated_dream[:dreamDate]).to eq("5/22/2023")
+        expect(updated_dream[:dreamDate]).to_not eq(@new_date)
+      end
 
       it 'can update part of a dream' do
         post '/graphql',
