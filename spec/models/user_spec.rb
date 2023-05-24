@@ -53,6 +53,31 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '#dreams_this_week' do
+    context 'for each user with dreams' do
+      it 'should return the number of dreams recorded this week' do
+        user = create(:user)
+        dream1 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 01))
+        dream2 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 22))
+        dream3 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 23))
+        dream4 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 24))
+        dream5 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 25))
+        dream6 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 27))
+        dream7 = create(:dream, user: user, dream_date: DateTime.new(2023, 06, 02))
+        dream8 = create(:dream, user: user, dream_date: DateTime.new(2023, 04, 30))
+        
+
+        expect(user.dreams_this_week).to eq(5)
+      end
+
+      it 'should return 0 if there are no dreams this week' do
+        user = create(:user)
+
+        expect(user.dreams_this_week).to eq(0)
+      end
+    end
+  end
+
   describe '#total_dreams' do
     it 'should return the total dreams recorded by a user' do
       user = create(:user)
@@ -81,8 +106,8 @@ RSpec.describe User, type: :model do
   
       average = (dream1.lucidity + dream2.lucidity + dream3.lucidity).to_f / 3
   
-      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to be_a(Float)
-      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to eq(average.round(2))
+      expect(user.average_lucidity).to be_a(Float)
+      expect(user.average_lucidity).to eq(average.round(2))
     end
   
     it 'should return 0 when the user has dreams but all have lucidity level 0' do
@@ -92,7 +117,7 @@ RSpec.describe User, type: :model do
       week_start_date = Date.today.beginning_of_week(:sunday)
       week_end_date = week_start_date + 6
   
-      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to eq(0)
+      expect(user.average_lucidity).to eq(0)
     end
   end
 
@@ -237,31 +262,6 @@ RSpec.describe User, type: :model do
         user = create(:user)
 
         expect(user.dreams_this_month).to eq(0)
-      end
-    end
-  end
-
-  describe '#dreams_this_week' do
-    context 'for each user with dreams' do
-      it 'should return the number of dreams recorded this week' do
-        user = create(:user)
-        dream1 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 01))
-        dream2 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 22))
-        dream3 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 23))
-        dream4 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 24))
-        dream5 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 25))
-        dream6 = create(:dream, user: user, dream_date: DateTime.new(2023, 05, 27))
-        dream7 = create(:dream, user: user, dream_date: DateTime.new(2023, 06, 02))
-        dream8 = create(:dream, user: user, dream_date: DateTime.new(2023, 04, 30))
-        
-
-        expect(user.dreams_this_week).to eq(5)
-      end
-
-      it 'should return 0 if there are no dreams this week' do
-        user = create(:user)
-
-        expect(user.dreams_this_week).to eq(0)
       end
     end
   end
