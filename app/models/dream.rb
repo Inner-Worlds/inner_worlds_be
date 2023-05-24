@@ -6,7 +6,7 @@ class Dream < ApplicationRecord
                         :dream_date
 
   validates :lucidity, numericality: { greater_than_or_equal_to: 0 }
-  
+
   belongs_to :user
   has_many :dream_emotions, dependent: :destroy
   has_many :emotions, through: :dream_emotions
