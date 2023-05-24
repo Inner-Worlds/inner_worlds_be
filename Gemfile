@@ -49,14 +49,16 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'rubocop'
 end
+
 gem 'faker'
 gem 'faraday'
-gem 'figaro'
 gem 'graphiql-rails'
 gem 'graphql'
-gem 'rubocop'
 gem 'rack-cors'
+gem 'figaro'
+
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'dotenv-rails', require: 'dotenv/rails-now'

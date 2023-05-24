@@ -64,7 +64,7 @@ We hope your experience is out of this world!
 
 ### Built With
 
-[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![Puma]][Puma-url][![Capybara]][Capybara-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![RSpec]][RSpec-url]
+[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![Puma]][Puma-url][![Capybara]][Capybara-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![RSpec]][RSpec-url][![GraphQL]][GraphQL-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -284,3 +284,6 @@ Don't forget to give the project a star! Thanks again!
 
 [Web-mock]: https://img.shields.io/badge/-WebMock-8B0000?logo=rubygems&logoColor=white&style=for-the-badge
 [Web-mock-url]: https://github.com/bblimke/webmock
+
+[GraphQL]: https://img.shields.io/badge/GraphQL-E10098.svg?style=for-the-badge&logo=GraphQL&logoColor=white
+[GraphQL-url]: https://github.com/graphql

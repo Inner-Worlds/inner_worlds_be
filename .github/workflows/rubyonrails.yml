@@ -19,12 +19,15 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          POSTGRES_DB: rails_test
+          POSTGRES_DB: inner_worlds_be_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DATABASE_URL: "postgres://rails:password@localhost:5432/inner_worlds_be_test"
+      TOPICS_KEY: ${{ secrets.TOPICS_KEY }}
+      TOPICS_HOST: ${{ secrets.TOPICS_HOST }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

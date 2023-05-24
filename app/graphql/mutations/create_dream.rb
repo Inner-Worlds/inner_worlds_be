@@ -26,10 +26,7 @@ class Mutations::CreateDream < Mutations::BaseMutation
       dream_emotions = DreamEmotion.create!(dream_id: dream.id, emotion_id: new_emotion.id)
     end
 
-    tags = tags.map do |name| 
-      new_tag = Tag.find_or_create_by(name: name)
-      dream_tag = DreamTag.create!(dream_id: dream.id, tag_id: new_tag.id)
-    end
+    TagFacade.new(dream, tags).generate_tags
 
     dream
   end

@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://twinword-topic-tagging.p.rapidapi.com/generate/?text=how%20much%20is%20that%20doggie%20in%20the%20window?%20The%20one%20with%20the%20waggily%20tail.%20How%20much%20is%20that%20doggie%20in%20the%20window?%20I%20do%20hope%20that%20doggie%27s%20for%20sale.
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.4
+      X-Rapidapi-Key:
+      - 19d74b1b15mshb8fff83e34cec70p1a5357jsna7eb0f7e7805
+      X-Rapidapi-Host:
+      - twinword-topic-tagging.p.rapidapi.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 May 2023 20:59:12 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=Gs4drHkDeEma7XbNUOrx7nGkEFJLc6YPot8uN23zHb0TOqM%2B%2FT0lVav6mubmaXA2qtN1Y96vVJnH%2FfXF6y3ZaMQa5Crw3ubHlKp6SEIci0%2BfEXMXAqh03uFSX%2F3oyYDrwepu"}],"group":"cf-nel","max_age":604800}'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      Referrer-Policy:
+      - same-origin
+      Cf-Ray:
+      - 7cc038a9bfa2c6e9-SEA
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=86400, enforce
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Requests-Limit:
+      - '9000'
+      X-Ratelimit-Requests-Remaining:
+      - '8986'
+      X-Ratelimit-Requests-Reset:
+      - '2665488'
+      Server:
+      - RapidAPI-1.2.8
+      X-Rapidapi-Version:
+      - 1.2.8
+      X-Rapidapi-Region:
+      - AWS - us-west-2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"keyword":{"window":2,"tail":1,"hope":1,"sale":1},"topic":{"door":0.20930232558139536,"entrance":0.20930232558139536,"fin":0.20930232558139536,"window":0.20930232558139536,"threshold":0.20930232558139536,"style":0.20930232558139536,"skylight":0.20930232558139536,"shape":0.20930232558139536,"roof":0.20930232558139536,"porthole":0.20930232558139536},"version":"7.5.3","author":"twinword
+        inc.","email":"help@twinword.com","result_code":"200","result_msg":"Success"}'
+  recorded_at: Tue, 23 May 2023 20:59:12 GMT
+recorded_with: VCR 6.1.0
