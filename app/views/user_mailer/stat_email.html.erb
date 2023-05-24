@@ -3,12 +3,39 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-     
+     body {
+      background-image: url('/app/assets/images/inner_worlds_background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      height: 100%;
+     }
     </style>
   </head>
 
   <body>
     <h2>Greetings Cadet <%= @user.name.capitalize %>!!</h2>
+
+    <h3>Here are your stats for last week:</h3>
+    <p><strong>Current Streak: </strong><%= @user.current_streak %></p>
+    <p><strong>Longest Streak: </strong><%= @user.longest_streak %></p>
+    <p><strong>Number of Dreams This Month (so far): </strong><%= @user.dreams_this_month %></p>
+    <p><strong>Number of Dreams Last Week: </strong><%= @user.dreams_this_week %></p>
+    <p><strong>Total Dreams Logged: </strong><%= @user.total_dreams %></p>
+    <p><strong>Average Lucidity Level: </strong><%= @user.average_lucidity %></p>
+
+    <h3>Top 5 Emotions (all time):</h3>
+    <ol>
+      <% @user.top_5_emotions.each do |emotion| %>
+        <p><li><h4><%= emotion[:name] %></h4> Frequency: <%= emotion[:frequency] %>, Percentage: <%= emotion[:percent] %>%</p></li>
+      <% end %>
+    </ol>
+
+    <h3>Top 5 Tags (all time):</h3>
+    <ol><% @user.top_5_tags.each do |tag| %>
+        <p><li><h4><%= tag[:name] %></h4> Frequency: <%= tag[:frequency] %>, Percentage: <%= tag[:percent] %>%</p></li>
+      <% end %>
+    </ol>
     <%= yield %>
   </body>
 </html>
