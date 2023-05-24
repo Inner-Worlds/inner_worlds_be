@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://twinword-topic-tagging.p.rapidapi.com/generate/?text=Last%20night%20I%20had%20a%20terrible%20dream%20where%20a%20balloon%20art%20clown%20made%20a%20dog%20out%20of%20a%20balloon,%20and%20the%20dog%20came%20to%20life.%20I%20tried%20to%20bite%20the%20balloon%20dog%20with%20my%20teeth,%20but%20all%20of%20my%20teeth%20fell%20out.%20Then%20my%20bones%20turned%20into%20jello,%20and%20I%20became%20a%20deflated%20goo%20person.
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.4
+      X-Rapidapi-Key:
+      - 19d74b1b15mshb8fff83e34cec70p1a5357jsna7eb0f7e7805
+      X-Rapidapi-Host:
+      - twinword-topic-tagging.p.rapidapi.com
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 May 2023 19:20:14 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=vMnJ0MJkoEKT32JX6zvNOpCcnN2j0C1jdn0hdS5vZu%2FJCmTF3Sd2Gl6CxuBQDUtXOjOs9WH2qCGEMPWNsLFKDZstRm5yg%2F7feB0q8Xv1l%2Ff61ZuACRKnC6JY0WgrQUWmpn2S"}],"group":"cf-nel","max_age":604800}'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+      Referrer-Policy:
+      - same-origin
+      Cf-Ray:
+      - 7cbfa7af7f21c751-SEA
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains; preload
+      Expect-Ct:
+      - max-age=86400, enforce
+      X-Content-Type-Options:
+      - nosniff
+      Cf-Cache-Status:
+      - DYNAMIC
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ratelimit-Requests-Limit:
+      - '9000'
+      X-Ratelimit-Requests-Remaining:
+      - '8989'
+      X-Ratelimit-Requests-Reset:
+      - '2671426'
+      Server:
+      - RapidAPI-1.2.8
+      X-Rapidapi-Version:
+      - 1.2.8
+      X-Rapidapi-Region:
+      - AWS - us-west-2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"keyword":{"dog":3,"balloon":3,"teeth":2,"night":1,"terrible":1,"dream":1,"art":1,"clown":1,"come":1,"life":1},"topic":{"animal":0.2850539291217257,"human":0.2280431432973806,"fat":0.2280431432973806,"monster":0.2280431432973806,"job":0.2280431432973806,"taste":0.17103235747303544,"science":0.17103235747303544,"period":0.17103235747303544,"model":0.17103235747303544,"future":0.17103235747303544},"version":"7.5.3","author":"twinword
+        inc.","email":"help@twinword.com","result_code":"200","result_msg":"Success"}'
+  recorded_at: Tue, 23 May 2023 19:20:14 GMT
+recorded_with: VCR 6.1.0
