@@ -69,24 +69,30 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#average_lucidity' do
-    it 'should return average lucidity across all recorded dreams' do
+  describe '#average_weekly_lucidity' do
+    it 'should return average lucidity for the week' do
       user = create(:user)
-      dream1 = create(:dream, lucidity: 3, user: user)
-      dream2 = create(:dream, lucidity: 2, user: user)
-      dream3 = create(:dream, lucidity: 4, user: user)
+      dream1 = create(:dream, lucidity: 3, user: user, dream_date: Date.today + 1)
+      dream2 = create(:dream, lucidity: 2, user: user, dream_date: Date.today + 2)
+      dream3 = create(:dream, lucidity: 4, user: user, dream_date: Date.today + 3)
+      
+      week_start_date = Date.today.beginning_of_week(:sunday)
+      week_end_date = week_start_date + 6
   
       average = (dream1.lucidity + dream2.lucidity + dream3.lucidity).to_f / 3
   
-      expect(user.average_lucidity).to be_a(Float)
-      expect(user.average_lucidity).to eq(average)
+      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to be_a(Float)
+      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to eq(average.round(2))
     end
-
+  
     it 'should return 0 when the user has dreams but all have lucidity level 0' do
       user = create(:user)
       create_list(:dream, 3, user: user, lucidity: 0)
-
-      expect(user.average_lucidity).to eq(0)
+  
+      week_start_date = Date.today.beginning_of_week(:sunday)
+      week_end_date = week_start_date + 6
+  
+      expect(user.average_weekly_lucidity(week_start_date, week_end_date)).to eq(0)
     end
   end
 
