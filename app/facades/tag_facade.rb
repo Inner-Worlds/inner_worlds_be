@@ -1,5 +1,6 @@
-class TagFacade
+# frozen_string_literal: true
 
+class TagFacade
   def initialize(dream, user_made_tags)
     @dream = dream
     @user_made_tags = user_made_tags
@@ -15,13 +16,11 @@ class TagFacade
   end
 end
 
-
-
-private 
+private
 
 def generate_dreamtags(tags)
-  tags.map do |name| 
-    new_tag = Tag.find_or_create_by(name: name)
+  tags.map do |name|
+    new_tag = Tag.find_or_create_by(name:)
     DreamTag.create!(dream_id: @dream.id, tag_id: new_tag.id)
   end
 end

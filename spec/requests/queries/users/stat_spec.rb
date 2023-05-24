@@ -125,7 +125,7 @@ RSpec.describe User, type: :request do
 
   context 'when not successful' do
     xit 'some error message is returned' do
-      #TO DO
+      # TO DO
     end
   end
 

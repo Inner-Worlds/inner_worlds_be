@@ -1,19 +1,22 @@
-require "rails_helper"
+# frozen_string_literal: true
 
-RSpec.describe Dream, type: :request do 
-  describe "Update a dream" do 
-    before :each do 
+require 'rails_helper'
+
+RSpec.describe Dream, type: :request do
+  describe 'Update a dream' do
+    before :each do
       user = create(:user)
       @dream = create(:dream, lucidity: 3, user:)
       @new_title = "Help! I've fallen and I can't get up!"
-      @new_description = "Clap on! Clap off!"
+      @new_description = 'Clap on! Clap off!'
       @new_lucidity = 4
-      @new_date = "2023-05-28"
+      @new_date = '2023-05-28'
     end
-    describe "When Successful" do
-      it "can update a dream" do 
-
-        post "/graphql", params: { query: dream_mutation(id: @dream.id, title: @new_title, description: @new_description, lucidity: @new_lucidity, dream_date: @new_date) }
+    describe 'When Successful' do
+      it 'can update a dream' do
+        post '/graphql',
+             params: { query: dream_mutation(id: @dream.id, title: @new_title, description: @new_description,
+                                             lucidity: @new_lucidity, dream_date: @new_date) }
 
         parsed_response = JSON.parse(response.body, symbolize_names: true)
         updated_dream = parsed_response[:data][:updateDream]
@@ -22,35 +25,39 @@ RSpec.describe Dream, type: :request do
         expect(updated_dream[:title]).to eq("Help! I've fallen and I can't get up!")
 
         expect(updated_dream[:description]).to_not eq(@dream.description)
-        expect(updated_dream[:description]).to eq("Clap on! Clap off!")
+        expect(updated_dream[:description]).to eq('Clap on! Clap off!')
 
         expect(updated_dream[:lucidity]).to_not eq(@dream.lucidity)
         expect(updated_dream[:lucidity]).to eq(4)
-        
-        expect(updated_dream[:dreamDate]).to eq("5/28/2023")
+
+        expect(updated_dream[:dreamDate]).to eq('5/28/2023')
         expect(updated_dream[:dreamDate]).to_not eq(@new_date)
       end
 
-      it "can update part of a dream" do 
-        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: @new_description, title: @dream.title, lucidity: @dream.lucidity, dream_date: @new_date) }
+      it 'can update part of a dream' do
+        post '/graphql',
+             params: { query: dream_mutation(id: @dream.id, description: @new_description, title: @dream.title,
+                                             lucidity: @dream.lucidity, dream_date: @new_date) }
 
         update_response = JSON.parse(response.body, symbolize_names: true)
         updated_dream = update_response[:data][:updateDream]
-        
+
         expect(updated_dream[:description]).to_not eq(@dream.description)
         expect(updated_dream[:description]).to eq(@new_description)
 
         expect(updated_dream[:title]).to eq(@dream.title)
         expect(updated_dream[:lucidity]).to eq(@dream.lucidity)
 
-        expect(updated_dream[:dreamDate]).to eq("5/28/2023")
+        expect(updated_dream[:dreamDate]).to eq('5/28/2023')
       end
     end
 
-    describe "When Unsuccessful" do 
-      it "returns an error if the dream is updated with incorrect data types" do 
-        post "/graphql", params: { query: dream_mutation(id: @dream.id, description: "", title: "", lucidity: @dream.lucidity, dream_date: @new_date) }
-        
+    describe 'When Unsuccessful' do
+      it 'returns an error if the dream is updated with incorrect data types' do
+        post '/graphql',
+             params: { query: dream_mutation(id: @dream.id, description: '', title: '', lucidity: @dream.lucidity,
+                                             dream_date: @new_date) }
+
         error_response = JSON.parse(response.body, symbolize_names: true)
 
         expect(error_response).to have_key(:errors)
@@ -61,18 +68,18 @@ RSpec.describe Dream, type: :request do
     end
   end
 
-  def dream_mutation(id: , title: , description:, lucidity:, dream_date:)
+  def dream_mutation(id:, title:, description:, lucidity:, dream_date:)
     <<~GQL
-    mutation{
-      updateDream(input: {id: "#{id}", title: "#{title}", description: "#{description}", lucidity: #{lucidity}, dreamDate: "#{dream_date}"})
-      {
-      id
-      dreamDate
-      title
-      description
-      lucidity
+      mutation{
+        updateDream(input: {id: "#{id}", title: "#{title}", description: "#{description}", lucidity: #{lucidity}, dreamDate: "#{dream_date}"})
+        {
+        id
+        dreamDate
+        title
+        description
+        lucidity
+        }
       }
-    }
     GQL
   end
 end

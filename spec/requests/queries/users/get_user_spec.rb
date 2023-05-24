@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :request do
   describe 'Get one user' do
-    describe "when successful" do 
+    describe 'when successful' do
       it 'successfully returns one user' do
         user = create(:user)
         5.times do
@@ -18,7 +18,7 @@ RSpec.describe User, type: :request do
         post '/graphql', params: { query: query_user(user.id) }
 
         user_response = JSON.parse(response.body, symbolize_names: true)
-       
+
         user_data = user_response[:data][:user]
         expect(user_data).to have_key(:name)
         expect(user_data[:name]).to be_a(String)
@@ -57,8 +57,8 @@ RSpec.describe User, type: :request do
         end
       end
 
-      describe "when unsuccessful" do 
-        it "returns an error response if the user does not exist" do 
+      describe 'when unsuccessful' do
+        it 'returns an error response if the user does not exist' do
           post '/graphql', params: { query: query_user(12) }
 
           error_response = JSON.parse(response.body, symbolize_names: true)
@@ -66,7 +66,7 @@ RSpec.describe User, type: :request do
           expect(error_response).to have_key(:errors)
           expect(error_response[:errors]).to be_an(Array)
           expect(error_response[:errors].first).to have_key(:message)
-          expect(error_response[:errors].first[:message]).to eq("User not found")
+          expect(error_response[:errors].first[:message]).to eq('User not found')
         end
       end
     end

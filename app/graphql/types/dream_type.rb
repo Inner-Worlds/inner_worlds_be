@@ -13,9 +13,8 @@ module Types
     field :emotions, [Types::EmotionType], null: true
     field :tags, [Types::TagType], null: true
 
-
     def dream_date
-      object.dream_date.strftime("%-m/%-d/%Y")
+      object.dream_date.strftime('%-m/%-d/%Y')
     end
   end
 end
