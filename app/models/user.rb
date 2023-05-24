@@ -63,7 +63,15 @@ class User < ApplicationRecord
     top_emotions = emotions.select("emotions.name, emotions.id, count(emotions.name) as frequency").group(:id).order("frequency desc", "emotions.name").limit(5)
 
     top_5 = top_emotions.map do |emotion|
-      { name: emotion.name, frequency: emotion.frequency, percent: (emotion.frequency.to_f/ dreams.count.to_f * 100).round(2) }
+      { name: emotion.name, frequency: emotion.frequency, percent: (emotion.frequency.to_f/ emotions.count.to_f * 100).round(2) }
+    end
+
+    remainder_int = emotions.count  - top_5.pluck(:frequency).sum
+    remainder_percent = 100.0 - top_5.pluck(:percent).sum
+    if remainder_int == 0 
+      top_5 << {name: "other", frequency: remainder_int, percent: 0}
+    else
+      top_5 << {name: "other", frequency: remainder_int, percent: remainder_percent}
     end
   end
 
@@ -71,7 +79,15 @@ class User < ApplicationRecord
     top_tags = tags.select("tags.name, tags.id, count(tags.name) as frequency").group(:id).order("frequency desc", "tags.name").limit(5)
 
     top_5 = top_tags.map do |tag|
-      { name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / dreams.count.to_f * 100).round(2) }
+      { name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / tags.count.to_f * 100).round(2) }
+    end
+
+    remainder_int = tags.count  - top_5.pluck(:frequency).sum
+    remainder_percent = 100.0 - top_5.pluck(:percent).sum
+    if remainder_int == 0 
+      top_5 << {name: "other", frequency: remainder_int, percent: 0}
+    else
+      top_5 << {name: "other", frequency: remainder_int, percent: remainder_percent}
     end
   end
 end

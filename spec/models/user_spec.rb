@@ -110,6 +110,8 @@ RSpec.describe User, type: :model do
         DreamEmotion.create(dream: dream1, emotion: emotion1)
         DreamEmotion.create(dream: dream1, emotion: emotion2)
         DreamEmotion.create(dream: dream1, emotion: emotion3)
+        DreamEmotion.create(dream: dream1, emotion: emotion4)
+
 
         DreamEmotion.create(dream: dream2, emotion: emotion1)
         DreamEmotion.create(dream: dream2, emotion: emotion5)
@@ -117,10 +119,20 @@ RSpec.describe User, type: :model do
         DreamEmotion.create(dream: dream3, emotion: emotion1)
         DreamEmotion.create(dream: dream3, emotion: emotion2)
         DreamEmotion.create(dream: dream3, emotion: emotion4)
+        DreamEmotion.create(dream: dream3, emotion: emotion5)
+
 
         DreamEmotion.create(dream: dream4, emotion: emotion1)
         DreamEmotion.create(dream: dream4, emotion: emotion2)
         DreamEmotion.create(dream: dream4, emotion: emotion3)
+
+        DreamEmotion.create(dream: dream4, emotion: emotion1)
+        DreamEmotion.create(dream: dream4, emotion: emotion2)
+        DreamEmotion.create(dream: dream4, emotion: emotion3)
+        DreamEmotion.create(dream: dream4, emotion: emotion6)
+        DreamEmotion.create(dream: dream4, emotion: emotion7)
+
+
 
         user_2 = create(:user)
         dream5 = create(:dream, user: user_2)
@@ -139,12 +151,13 @@ RSpec.describe User, type: :model do
         expect(user_1.top_5_emotions).to be_an(Array)
         expect(user_1.top_5_emotions.sample).to be_a(Hash)
         expect(user_1.top_5_emotions.sample.keys).to contain_exactly(:name, :frequency, :percent)
-        expect(user_1.top_5_emotions.size).to eq(5)
-        expect(user_1.top_5_emotions).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "guilty", frequency: 1, percent: 25.0}, {name: "love", frequency: 1, percent: 25.0}])
-        expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion6.name, emotion7.name)
-
-        expect(user_1.top_5_emotions.size).to eq(5)
-        expect(user_1.top_5_emotions).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "guilty", frequency: 1, percent: 25.0}, {name: "love", frequency: 1, percent: 25.0}])
+        expect(user_1.top_5_emotions.size).to eq(6)
+        expect(user_1.top_5_emotions).to eq([{:name=>"happy", :frequency=>5, :percent=>27.78},
+          {:name=>"sad", :frequency=>4, :percent=>22.22},
+          {:name=>"angry", :frequency=>3, :percent=>16.67},
+          {:name=>"guilty", :frequency=>2, :percent=>11.11},
+          {:name=>"love", :frequency=>2, :percent=>11.11},
+          {:name=>"other", :frequency=>2, :percent=>11.11}])
         expect(user_1.top_5_emotions.sample[:name]).to_not include(emotion6.name, emotion7.name)
       end
     end
@@ -199,12 +212,17 @@ RSpec.describe User, type: :model do
         expect(user_2.top_5_tags).to be_an(Array)
         expect(user_2.top_5_tags.sample).to be_a(Hash)
         expect(user_2.top_5_tags.sample.keys).to contain_exactly(:name, :frequency, :percent)
-        expect(user_2.top_5_tags.size).to eq(5)
-        expect(user_2.top_5_tags).to eq([{name: "happy", frequency: 4, percent: 100.0}, {name: "sad", frequency: 3, percent: 75.0}, {name: "angry", frequency: 2, percent: 50.0}, {name: "melancholy", frequency: 1, percent: 25.0}, {name: "somber", frequency: 1, percent: 25.0}])
+        expect(user_2.top_5_tags.size).to eq(6)
+        expect(user_2.top_5_tags).to eq([{:name=>"happy", :frequency=>4, :percent=>36.36},
+          {:name=>"sad", :frequency=>3, :percent=>27.27},
+          {:name=>"angry", :frequency=>2, :percent=>18.18},
+          {:name=>"melancholy", :frequency=>1, :percent=>9.09},
+          {:name=>"somber", :frequency=>1, :percent=>9.09},
+          {:name=>"other", :frequency=>0, :percent=>0}])
         expect(user_2.top_5_tags.sample[:name]).to_not include(tag6.name, tag7.name)
 
-        expect(user_3.top_5_tags.size).to eq(3)
-        expect(user_3.top_5_tags).to eq([{name: "happy", frequency: 3, percent: 100.0}, {name: "sad", frequency: 2, percent: 66.67}, {name: "angry", frequency: 1, percent: 33.33}])
+        expect(user_3.top_5_tags.size).to eq(4)
+        expect(user_3.top_5_tags).to eq([{:name=>"happy", :frequency=>3, :percent=>50.0}, {:name=>"sad", :frequency=>2, :percent=>33.33}, {:name=>"angry", :frequency=>1, :percent=>16.67}, {:name=>"other", :frequency=>0, :percent=>0}])
         expect(user_3.top_5_tags.sample[:name]).to_not include(tag4.name, tag5.name, tag6.name, tag7.name)
       end
     end
