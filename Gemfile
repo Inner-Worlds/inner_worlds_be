@@ -45,20 +45,19 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-graphql_matchers'
   gem 'rspec-rails'
+  gem 'rubocop'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
-  gem 'rubocop'
 end
 
 gem 'faker'
 gem 'faraday'
+gem 'figaro'
 gem 'graphiql-rails'
 gem 'graphql'
 gem 'rack-cors'
-gem 'figaro'
-
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]

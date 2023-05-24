@@ -14,23 +14,23 @@ module Types
     def dream_num_month
       object[:dreams_this_month]
     end
-    
+
     def dream_num_week
       object[:dreams_this_week]
     end
-    
+
     def total_dreams
       object[:total_dreams]
     end
-    
+
     def average_lucidity
       object[:average_lucidity]
     end
-    
+
     def current_streak
       object[:current_streak]
     end
-    
+
     def longest_streak
       object[:longest_streak]
     end

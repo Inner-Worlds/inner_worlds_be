@@ -9,5 +9,4 @@ class Tag < ApplicationRecord
   def self.default_tags
     where(default: true)
   end
-  
 end

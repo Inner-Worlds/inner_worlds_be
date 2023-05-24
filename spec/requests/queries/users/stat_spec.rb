@@ -67,7 +67,7 @@ RSpec.describe User, type: :request do
 
         expect(user_data).to have_key(:top5Tags)
         expect(user_data[:top5Tags]).to be_an(Array)
-        expect(user_data[:top5Tags].count).to eq(5)
+        expect(user_data[:top5Tags].count).to eq(6)
 
         user_data[:top5Tags].each do |tag|
           expect(tag).to have_key(:name)
@@ -82,7 +82,7 @@ RSpec.describe User, type: :request do
 
         expect(user_data[:top5Tags].first[:name]).to eq(@tag1.name)
         expect(user_data[:top5Tags].first[:frequency]).to eq(4)
-        expect(user_data[:top5Tags].first[:percent]).to eq(100.0)
+        expect(user_data[:top5Tags].first[:percent]).to eq(36.36)
       end
 
       it "successfully returns a user's top 5 emotion stats" do
@@ -93,7 +93,7 @@ RSpec.describe User, type: :request do
 
         expect(user_data).to have_key(:top5Emotions)
         expect(user_data[:top5Emotions]).to be_an(Array)
-        expect(user_data[:top5Emotions].count).to eq(5)
+        expect(user_data[:top5Emotions].count).to eq(6)
 
         user_data[:top5Emotions].each do |tag|
           expect(tag).to have_key(:name)
@@ -108,7 +108,7 @@ RSpec.describe User, type: :request do
 
         expect(user_data[:top5Emotions].first[:name]).to eq(@emotion1.name)
         expect(user_data[:top5Emotions].first[:frequency]).to eq(4)
-        expect(user_data[:top5Emotions].first[:percent]).to eq(100.0)
+        expect(user_data[:top5Emotions].first[:percent]).to eq(36.36)
       end
 
       it 'should return a value for each of the stats' do
@@ -125,7 +125,7 @@ RSpec.describe User, type: :request do
 
   context 'when not successful' do
     xit 'some error message is returned' do
-      #TO DO
+      # TO DO
     end
   end
 

@@ -18,7 +18,7 @@ RSpec.describe Emotion, type: :model do
         e2 = Emotion.create!(name: 'Sad', default: true)
         e3 = Emotion.create!(name: 'Horny', default: false)
         e4 = Emotion.create!(name: 'Exuberant', default: true)
-        e5 = Emotion.create!(name: 'Dead', default: false)
+        Emotion.create!(name: 'Dead', default: false)
 
         expect(Emotion.default_emotion).to eq([e1, e2, e4])
         expect(Emotion.default_emotion).to_not eq([e3, e4])

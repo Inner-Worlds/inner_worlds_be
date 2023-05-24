@@ -39,13 +39,12 @@ module Taypi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-
-    #Config CORS
+    # Config CORS
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '/graphql', headers: :any, methods: [:get, :post, :options]
+        resource '/graphql', headers: :any, methods: %i[get post options]
       end
     end
   end

@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Mutations::AddEmotion, type: :request do
   describe '.resolve' do
-    context "happy paths" do
+    context 'happy paths' do
       before do
         @user = create(:user)
         @dream = create(:dream, user_id: @user.id)
-        @name = "new emotion"
-  
+        @name = 'new emotion'
+
         post '/graphql', params: { query: mutation(dream_id: @dream.id, name: @name) }
         json = JSON.parse(response.body, symbolize_names: true)
-    
+
         @data = json[:data][:addEmotion]
         @new_emotion = Emotion.last
         @dream_emotion = DreamEmotion.last
@@ -26,25 +28,24 @@ RSpec.describe Mutations::AddEmotion, type: :request do
       end
 
       it 'reuses a tag if it already exists' do
-        post '/graphql', params: { query: mutation(dream_id: @dream.id, name: "new emotion") }
+        post '/graphql', params: { query: mutation(dream_id: @dream.id, name: 'new emotion') }
         json = JSON.parse(response.body, symbolize_names: true)
-        data = json[:data][:addTag]
+        json[:data][:addTag]
         new_emotion_2 = Emotion.last
-        dream_emotion_2 = DreamEmotion.last
+        DreamEmotion.last
 
         expect(new_emotion_2).to eq(@new_emotion)
       end
     end
 
     it 'can return an error' do
-      post '/graphql', params: { query: mutation(dream_id: "abc", name: "123") }
+      post '/graphql', params: { query: mutation(dream_id: 'abc', name: '123') }
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data][:addEmotion]
 
       expect(data[:errors]).to_not be_empty
     end
   end
-  
 
   def mutation(dream_id:, name:)
     <<~GQL
