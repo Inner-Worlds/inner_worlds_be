@@ -58,33 +58,28 @@ class User < ApplicationRecord
   end
 
   def top_5_emotions
-    top_emotions = emotions.select('emotions.name, emotions.id, count(emotions.name) as frequency').group(:id).order(
-      'frequency desc', 'emotions.name'
-    ).limit(5)
-
-    top_5 = top_emotions.map do |emotion|
-      { name: emotion.name, frequency: emotion.frequency,
-        percent: (emotion.frequency.to_f / emotions.count * 100).round(2) }
-    end
-
-    remainder_int = emotions.count - top_5.pluck(:frequency).sum
-    remainder_percent = 100.0 - top_5.pluck(:percent).sum
-    top_5 << if remainder_int.zero?
-               { name: 'other', frequency: remainder_int, percent: 0 }
-             else
-               { name: 'other', frequency: remainder_int, percent: remainder_percent }
-             end
+    top_5(:emotions)
   end
 
   def top_5_tags
-    top_tags = tags.select('tags.name, tags.id, count(tags.name) as frequency').group(:id).order('frequency desc',
-                                                                                                 'tags.name').limit(5)
+    top_5(:tags)
+  end
 
-    top_5 = top_tags.map do |tag|
-      { name: tag.name, frequency: tag.frequency, percent: (tag.frequency.to_f / tags.count * 100).round(2) }
+  private
+
+  def top_5(entity)
+    top_entities = send(entity)
+                   .select("#{entity}.name, #{entity}.id, count(#{entity}.name) as frequency")
+                   .group(:id)
+                   .order('frequency desc', "#{entity}.name")
+                   .limit(5)
+
+    top_5 = top_entities.map do |item|
+      { name: item.name, frequency: item.frequency,
+        percent: (item.frequency.to_f / send(entity).count * 100).round(2) }
     end
 
-    remainder_int = tags.count - top_5.pluck(:frequency).sum
+    remainder_int = send(entity).count - top_5.pluck(:frequency).sum
     remainder_percent = 100.0 - top_5.pluck(:percent).sum
     top_5 << if remainder_int.zero?
                { name: 'other', frequency: remainder_int, percent: 0 }
