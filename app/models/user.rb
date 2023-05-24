@@ -49,11 +49,17 @@ class User < ApplicationRecord
   end
 
   def average_lucidity
-    total_dreams = dreams.count
-    sum_lucidity = dreams.sum(:lucidity)
-
-    average = sum_lucidity.to_f / total_dreams
-
+    week_start_date = Date.today.beginning_of_week(:sunday)
+    week_end_date = week_start_date + 6
+    dream_days = dreams.where(dream_date: week_start_date..week_end_date)
+    total_dreams_this_week = dreams_this_week
+    sum_lucidity_this_week = dream_days.sum(:lucidity)
+   
+    if total_dreams_this_week > 0
+      average = sum_lucidity_this_week.to_f / total_dreams_this_week
+    else
+      average = 0.0
+    end
     average.round(2)
   end
 
