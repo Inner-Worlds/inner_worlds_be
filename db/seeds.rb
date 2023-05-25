@@ -19,11 +19,11 @@ emotion4 = Emotion.create(name: 'Excited')
 
 weston = User.create(name: 'Weston Sandfort', email: 'sandfortw@gmail.com')
 dream1 = Dream.create(user_id: weston.id, description: 'I was in a field of flowers.', lucidity: 3,
-                      title: 'Field of Flowers', dream_date: '2023-05-21')
+                      title: 'Field of Flowers', dream_date: Date.today)
 dream2 = Dream.create(user_id: weston.id, description: 'I was in a field of scorpions aahhhh.', lucidity: 2,
-                      title: 'Field of Scorps', dream_date: '2023-05-22')
+                      title: 'Field of Scorps', dream_date: (Date.today - 1))
 dream3 = Dream.create(user_id: weston.id, description: 'I was rock climbing, it was hella sweet!', lucidity: 4,
-                      title: 'I Sent It!!!', dream_date: '2023-05-23')
+                      title: 'I Sent It!!!', dream_date: (Date.today - 2))
 
 DreamTag.create(dream_id: dream1.id, tag_id: tag1.id)
 DreamTag.create(dream_id: dream1.id, tag_id: tag3.id)
@@ -41,11 +41,11 @@ DreamEmotion.create(dream_id: dream3.id, emotion_id: emotion4.id)
 
 bobby = User.create(name: 'Bobby Luly', email: 'bikerbob125@aol.com')
 dream4 = Dream.create(user_id: bobby.id, description: 'I was floating in the endless cosmos.', lucidity: 5,
-                      title: 'Lake of Stars', dream_date: '2023-05-21')
+                      title: 'Lake of Stars', dream_date: Date.today)
 dream5 = Dream.create(user_id: bobby.id, description: 'I was getting chased by a clown.', lucidity: 2,
-                      title: 'Clowns are Whack', dream_date: '2023-05-22')
+                      title: 'Clowns are Whack', dream_date: (Date.today - 1))
 dream6 = Dream.create(user_id: bobby.id,
-                      description: 'I was at an all inclusive beach-side music festival! It was glorious!', lucidity: 4, title: 'Mayan Holidaze', dream_date: '2023-05-23')
+                      description: 'I was at an all inclusive beach-side music festival! It was glorious!', lucidity: 4, title: 'Mayan Holidaze', dream_date: (Date.today - 2))
 
 DreamTag.create(dream_id: dream4.id, tag_id: tag1.id)
 DreamTag.create(dream_id: dream4.id, tag_id: tag3.id)
@@ -61,7 +61,7 @@ DreamEmotion.create(dream_id: dream5.id, emotion_id: emotion3.id)
 DreamEmotion.create(dream_id: dream6.id, emotion_id: emotion1.id)
 DreamEmotion.create(dream_id: dream6.id, emotion_id: emotion4.id)
 
-100.times do
+10.times do
   user = User.create(name: Faker::TvShows::VentureBros.character, email: Faker::Internet.email)
   3.times do
     dream = Dream.create(user_id: user.id, description: Faker::Movies::Ghostbusters.quote,
