@@ -34,7 +34,7 @@ RSpec.describe Dream, type: :request do
         expect(updated_dream[:dreamDate]).to_not eq(@new_date)
       end
       
-       it "can update a dream with mmm/dd/yyyy formatted date" do 
+       it "can update a dream with mm/dd/yyyy formatted date" do 
 
         post "/graphql", params: { query: dream_mutation(id: @dream.id, title: @new_title, description: @new_description, lucidity: @new_lucidity, dream_date: "05/22/2023" ) }
 
