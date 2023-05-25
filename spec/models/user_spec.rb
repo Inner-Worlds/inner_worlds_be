@@ -98,9 +98,9 @@ RSpec.describe User, type: :model do
     it 'should return average lucidity for the week' do
       user = create(:user)
 
-      dream1 = create(:dream, lucidity: 3, user: user, dream_date: Date.today + 1)
-      dream2 = create(:dream, lucidity: 2, user: user, dream_date: Date.today + 2)
-      dream3 = create(:dream, lucidity: 4, user: user, dream_date: Date.today + 3)
+      dream1 = create(:dream, lucidity: 3, user: user, dream_date: DateTime.new(2023, 05, 22))
+      dream2 = create(:dream, lucidity: 2, user: user, dream_date: DateTime.new(2023, 05, 23))
+      dream3 = create(:dream, lucidity: 4, user: user, dream_date: DateTime.new(2023, 05, 24))
       
       week_start_date = Date.today.beginning_of_week(:sunday)
       week_end_date = week_start_date + 6
