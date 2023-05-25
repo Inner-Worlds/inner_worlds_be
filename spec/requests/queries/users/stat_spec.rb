@@ -123,12 +123,6 @@ RSpec.describe User, type: :request do
     end
   end
 
-  context 'when not successful' do
-    xit 'some error message is returned' do
-      # TO DO
-    end
-  end
-
   def query_user_stats(user_id)
     <<~GQL
       query{
