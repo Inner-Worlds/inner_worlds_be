@@ -109,9 +109,6 @@ RSpec.describe User, type: :model do
     it 'should return 0 when the user has dreams but all have lucidity level 0' do
       user = create(:user)
       create_list(:dream, 3, user: user, lucidity: 0)
-  
-      week_start_date = Date.today.beginning_of_week(:sunday)
-      week_end_date = week_start_date + 6
       
       expect(user.average_lucidity).to eq(0)
     end
