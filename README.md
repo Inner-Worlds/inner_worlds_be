@@ -135,7 +135,6 @@ _Follow the steps below to install and set up this app._
 <!-- JSON Contract -->
 ## GraphQL Endpoint Details
 * Below are example Requests and Responses for each endpoint
-<br />
 
 ### Create a Dream - Request/Response
 <details>
@@ -155,7 +154,6 @@ _Follow the steps below to install and set up this app._
 
   ![create_dream_missing_fields](https://user-images.githubusercontent.com/116703107/240805231-2189394e-0747-4cb7-9295-dd25c5994999.png)
 </details>
-<br />
 
 ### Get a User and their Dreams with details - Request/Response
 <details>
@@ -171,7 +169,6 @@ _Follow the steps below to install and set up this app._
 
   ![get_a_user_unsuccessful](https://user-images.githubusercontent.com/116703107/240805646-f169d93d-7b21-4698-af18-ae5ff7ceb1be.png)
 </details>
-<br />
 
 ### Update a User's Dream - Request/Response
 <details>
@@ -187,7 +184,6 @@ _Follow the steps below to install and set up this app._
 
   ![update_dream_unsuccessful](https://user-images.githubusercontent.com/116703107/240806544-6cb109cd-d751-4df9-9140-b81a2aff10bd.png)
 </details>
-<br />
 
 ### Delete a User's Dream - Request/Response
 <details>
@@ -203,7 +199,6 @@ _Follow the steps below to install and set up this app._
 
   ![delete_dream_unsuccessful](https://user-images.githubusercontent.com/116703107/240807017-9e05467c-3474-4a76-a32b-6a5242a3ab24.png)
 </details>
-<br />
 
 ### Get a User's Dream Stats - Request/Response
 <details>
@@ -219,7 +214,6 @@ _Follow the steps below to install and set up this app._
 
   ![stats_unsuccessful](https://user-images.githubusercontent.com/116703107/240808787-a122571f-4475-4e3e-a4a6-49373115017e.png)
 </details>
-<br />
 
 ### Add a Tag to a User's Dream - Request/Response
 <details>
@@ -227,7 +221,6 @@ _Follow the steps below to install and set up this app._
 
   ![add_tag_to_dream](https://user-images.githubusercontent.com/116703107/240807428-d547a138-5ba4-4a9a-b64a-1e19d71739d2.png)
 </details>
-<br />
 
 ### Add an Emotion to a User's Dream - Request/Response
 <details>
@@ -235,7 +228,6 @@ _Follow the steps below to install and set up this app._
 
  ![add_emotion_to_dream](https://user-images.githubusercontent.com/116703107/240807596-7574cec8-8e89-4080-a686-e967b89bcf71.png)
 </details>
-<br />
 
 ### Get all Default Tags - Request/Response
 <details>
@@ -243,7 +235,6 @@ _Follow the steps below to install and set up this app._
 
 ![default_tags](https://user-images.githubusercontent.com/116703107/240807760-10aef7f3-9c01-472e-97fd-204fc3e80d89.png)
 </details>
-<br />
 
 ### Get all Default Emotions - Request/Response
 <details>
@@ -251,7 +242,6 @@ _Follow the steps below to install and set up this app._
 
 ![default_emotions](https://user-images.githubusercontent.com/116703107/240808047-0c7ddea8-ea0d-4b9f-a4de-5bdcac1e69c9.png)
 </details>
-<br />
 
 ### Delete a User - Request/Response
 <details>
@@ -267,7 +257,6 @@ _Follow the steps below to install and set up this app._
 
   ![delete_user_unsuccessful](https://user-images.githubusercontent.com/116703107/240808396-9c71ea0d-56ab-48a0-bbce-e21144e05f96.png)
 </details>
-<br />
 
 ### Delete a User's Dream's Emotion - Request/Response
 <details>
@@ -283,7 +272,6 @@ _Follow the steps below to install and set up this app._
 
   ![delete_a_dream_emotion_unsuccessful](https://user-images.githubusercontent.com/116703107/240809566-6928f03f-91f4-4f36-b6e4-2eae4ef6842a.png)
 </details>
-<br />
 
 ### Delete a User's Dream's Tag - Request/Response
 <details>
