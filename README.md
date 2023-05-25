@@ -3,16 +3,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/116703107/239712974-64aaeb60-037c-4879-a723-93eea5a59b60.png" height="200">
+    <img src="https://user-images.githubusercontent.com/116703107/240810572-224ff783-9b72-46ec-84a8-902e2e0a91a8.png" height="400px">
+
+<br />
+  <h1 align="center"> Inner Worlds Back End </h3>
 <br>
-  <h3 align="center"> Inner Worlds Back End </h3>
-<br>
-  <p align="center">
-    Mod 4 Capstone Project
-    <br />
-  </p>
+  <h3 align="center"> Mod 4 Capstone Project </h3>
 </div>
-<br>
+<br />
 
 
 <!-- TABLE OF CONTENTS -->
@@ -36,13 +34,14 @@
     <ul>
         <li><a href="#testing">Testing</a></li>
     </ul>
-    <li><a href="#endpoint">Endpoint Details</a></li>
+    <li><a href="#graphql-endpoint-details">GraphQL Endpoint Details</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#inner">Inner Worlds Team</a></li>
+    <li><a href="#inner-worlds-team">Inner Worlds Team</a></li>
     <li><a href="#acknowledgements">Acknowlegdements</a></li>
   </ol>
 </details>
 
+<br />
 
 ## About The Project
 
@@ -61,6 +60,7 @@ The learning goals for this project were;
 
 We hope your experience is out of this world!
 
+<br />
 
 ### Built With
 
@@ -85,6 +85,8 @@ We hope your experience is out of this world!
   ```
 * [PostgreSQL](https://www.postgresql.org/download/)
 
+<br />
+
 ### Installation
 
 _Follow the steps below to install and set up this app._
@@ -104,9 +106,12 @@ _Follow the steps below to install and set up this app._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<br />
 
 <!-- USAGE EXAMPLES -->
 ## Schema
+
+<br />
 
 <div align="center">
 
@@ -116,6 +121,7 @@ _Follow the steps below to install and set up this app._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<br />
 
 <!-- Testing -->
 ### Testing
@@ -124,31 +130,176 @@ _Follow the steps below to install and set up this app._
 * After cloning this repo and following the steps above to install all necessary gems and API keys:
   * Run the entire test suite using the command `bundle exec rspec`
 
+<br />
 
 <!-- JSON Contract -->
-## Endpoint Details
+## GraphQL Endpoint Details
 * Below are example Requests and Responses for each endpoint
+<br />
 
-### Weather for Location Request/Response
-![weather_request](https://user-images.githubusercontent.com/116703107/234476140-b0750f71-6b2a-4ee5-83f6-4200d90bc7d9.png)
+### Create a Dream - Request/Response
+<details>
+  <summary>Successful</summary>
 
-* Response
+  ![create_dream_successful](https://user-images.githubusercontent.com/116703107/240803860-c3234614-06e7-4b89-b7cd-7975a7fb8cca.png)
+</details>
 
-![weather_response](https://user-images.githubusercontent.com/116703107/234476434-5c473fe1-f8a2-47ea-81cf-ae7365e252b2.png)
+<details>
+  <summary>Unsuccessful</summary>
 
-### User Registration Request/Response
-![registration](https://user-images.githubusercontent.com/116703107/234477540-1e9ef340-f129-4061-a125-453ab20a5dcc.png)
+  * Record Doesn't Exist
 
-### User Login Request/Response
-![login](https://user-images.githubusercontent.com/116703107/234477634-099538e5-85c3-4b22-ab18-19ff96700b14.png)
+  ![create_dream_no_user](https://user-images.githubusercontent.com/116703107/240804545-4e32ad7f-c935-4a9c-91df-5f13ef0b7f6f.png)
 
-### Road Trip Request/Response
-![road_trip_request](https://user-images.githubusercontent.com/116703107/234477729-5cd68dc5-70cd-4d46-ab9c-4b5029145814.png)
+  * Missing Fields
 
-* Response
+  ![create_dream_missing_fields](https://user-images.githubusercontent.com/116703107/240805231-2189394e-0747-4cb7-9295-dd25c5994999.png)
+</details>
+<br />
 
-![road_trip_response](https://user-images.githubusercontent.com/116703107/234477841-80693e8d-2c1d-4128-a602-7491d23d2160.png)
+### Get a User and their Dreams with details - Request/Response
+<details>
+  <summary>Successful</summary>
 
+  ![get_a_user_success](https://user-images.githubusercontent.com/116703107/240805561-634beaf4-4a77-4269-ac73-5180dc685b10.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Record Doesn't Exist
+
+  ![get_a_user_unsuccessful](https://user-images.githubusercontent.com/116703107/240805646-f169d93d-7b21-4698-af18-ae5ff7ceb1be.png)
+</details>
+<br />
+
+### Update a User's Dream - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![update_dream_successful](https://user-images.githubusercontent.com/116703107/240806146-1fedec38-5c12-414e-bd5b-8cdcb8e429dc.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Missing Fields
+
+  ![update_dream_unsuccessful](https://user-images.githubusercontent.com/116703107/240806544-6cb109cd-d751-4df9-9140-b81a2aff10bd.png)
+</details>
+<br />
+
+### Delete a User's Dream - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![delete_dream_success](https://user-images.githubusercontent.com/116703107/240806940-102c28ca-687d-41a0-8bab-c5fb794f06da.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Record Doesn't Exist
+
+  ![delete_dream_unsuccessful](https://user-images.githubusercontent.com/116703107/240807017-9e05467c-3474-4a76-a32b-6a5242a3ab24.png)
+</details>
+<br />
+
+### Get a User's Dream Stats - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![stats_successful](https://user-images.githubusercontent.com/116703107/240808696-2e668189-0809-4def-899b-3135dfdac0a9.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Record Doesn't Exist
+
+  ![stats_unsuccessful](https://user-images.githubusercontent.com/116703107/240808787-a122571f-4475-4e3e-a4a6-49373115017e.png)
+</details>
+<br />
+
+### Add a Tag to a User's Dream - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![add_tag_to_dream](https://user-images.githubusercontent.com/116703107/240807428-d547a138-5ba4-4a9a-b64a-1e19d71739d2.png)
+</details>
+<br />
+
+### Add an Emotion to a User's Dream - Request/Response
+<details>
+  <summary>Successful</summary>
+
+ ![add_emotion_to_dream](https://user-images.githubusercontent.com/116703107/240807596-7574cec8-8e89-4080-a686-e967b89bcf71.png)
+</details>
+<br />
+
+### Get all Default Tags - Request/Response
+<details>
+  <summary>Successful</summary>
+
+![default_tags](https://user-images.githubusercontent.com/116703107/240807760-10aef7f3-9c01-472e-97fd-204fc3e80d89.png)
+</details>
+<br />
+
+### Get all Default Emotions - Request/Response
+<details>
+  <summary>Successful</summary>
+
+![default_emotions](https://user-images.githubusercontent.com/116703107/240808047-0c7ddea8-ea0d-4b9f-a4de-5bdcac1e69c9.png)
+</details>
+<br />
+
+### Delete a User - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![delete_user_successful](https://user-images.githubusercontent.com/116703107/240808198-24c6386e-d29f-4085-ae82-a4489f1d7604.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Record Doesn't Exist
+
+  ![delete_user_unsuccessful](https://user-images.githubusercontent.com/116703107/240808396-9c71ea0d-56ab-48a0-bbce-e21144e05f96.png)
+</details>
+<br />
+
+### Delete a User's Dream's Emotion - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![delete_a_dream_emotion_success](https://user-images.githubusercontent.com/116703107/240809131-0529ef10-b722-476f-96f2-790ef0d3d8a6.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+
+  * Record Doesn't Exist
+
+  ![delete_a_dream_emotion_unsuccessful](https://user-images.githubusercontent.com/116703107/240809566-6928f03f-91f4-4f36-b6e4-2eae4ef6842a.png)
+</details>
+<br />
+
+### Delete a User's Dream's Tag - Request/Response
+<details>
+  <summary>Successful</summary>
+
+  ![delete_a_dream_tag_success](https://user-images.githubusercontent.com/116703107/240810106-a5c51585-fc3f-462a-9d37-65c89455ba77.png)
+</details>
+
+<details>
+  <summary>Unsuccessful</summary>
+  
+  * Record Doesn't Exist
+
+  ![delete_a_dream_tag_unsuccessful](https://user-images.githubusercontent.com/116703107/240810304-fbe985f5-a083-4518-8c79-b323694a76ee.png)
+</details>
+<br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -212,6 +363,8 @@ Don't forget to give the project a star! Thanks again!
     </td>
   </tr>
 </table>
+
+<br />
 
 ### Front End
 
