@@ -45,7 +45,7 @@
 
 ## About The Project
 
-Inner Worlds is an application to help a user keep a detailed dream journal, and provide data about their dreams.
+Inner Worlds is an application to help a user keep a detailed dream journal, and provide data about their dreams. This repository serves as a GraphQL API for out Front End Application.
 
 The learning goals for this project were;
 
