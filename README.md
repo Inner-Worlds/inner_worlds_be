@@ -10,7 +10,7 @@
 <br />
   <h1 align="center"> Inner Worlds Back End </h3>
   <h3 align="center"> Mod 4 Capstone Project </h3>
-  
+
   [Visit Inner Worlds today!](https://inner-worlds-ui.vercel.app/)
 </div>
 <br />
@@ -94,17 +94,23 @@ We hope your experience is out of this world!
 
 _Follow the steps below to install and set up this app._
 
-1. Clone this Repository
+1. THIS REPO NEEDS A TWINWORD API KEY. Get a free API Key at [https://www.twinword.com/api/topic-tagging.php](https://www.twinword.com/api/topic-tagging.php)
+2. Clone this Repository
    ```sh
    git clone https://github.com/Inner-Worlds/inner_worlds_be
    ```
-2. In your terminal, run the following commands;
+3. In your terminal, run the following commands;
     ```sh
     bundle install
-    'rails generate graphql:install'
+    rails generate graphql:install
+    bundle exec figaro install
     rails db:{drop,create,migrate,seed}
     ```
-3. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
+4. Add your TwinWord API key to the `application.yml` file
+   ```ruby
+   TWINWORD_API_KEY: 'ENTER YOUR KEY';
+   ```
+5. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
