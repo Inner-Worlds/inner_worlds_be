@@ -13,6 +13,8 @@ class TopicService
     end
     json = JSON.parse(response.body, symbolize_names: true)
     json[:keyword].keys.first(3) << json[:topic].keys.first # First 3 keys, and first topic from the response
+  rescue
+    []
   end
 
   private
