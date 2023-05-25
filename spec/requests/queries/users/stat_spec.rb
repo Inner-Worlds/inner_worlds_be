@@ -123,7 +123,6 @@ RSpec.describe User, type: :request do
     end
   end
 
-
   def query_user_stats(user_id)
     <<~GQL
       query{
