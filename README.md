@@ -3,12 +3,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <a href="https://inner-worlds-ui.vercel.app/">
     <img src="https://user-images.githubusercontent.com/116703107/240810572-224ff783-9b72-46ec-84a8-902e2e0a91a8.png" height="400px">
+  </a>
 
 <br />
   <h1 align="center"> Inner Worlds Back End </h3>
-<br>
   <h3 align="center"> Mod 4 Capstone Project </h3>
+
+  [Visit Inner Worlds today!](https://inner-worlds-ui.vercel.app/)
 </div>
 <br />
 
@@ -45,7 +48,7 @@
 
 ## About The Project
 
-Inner Worlds is an application to help a user keep a detailed dream journal, and provide data about their dreams. This repository serves as a GraphQL API for out Front End Application.
+Inner Worlds is an application to help a user keep a detailed dream journal, and provide data about their dreams. This repository serves as a GraphQL API for our [Front End Application](https://inner-worlds-ui.vercel.app/).
 
 The learning goals for this project were;
 
@@ -64,7 +67,7 @@ We hope your experience is out of this world!
 
 ### Built With
 
-[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![Puma]][Puma-url][![Capybara]][Capybara-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![RSpec]][RSpec-url][![GraphQL]][GraphQL-url]
+[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![GraphQL]][GraphQL-url][![RSpec]][RSpec-url][![Github-Actions]][Github-Actions-url][![Render]][Render-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![Puma]][Puma-url][![VCR]][VCR-url][![Web-mock]][Web-mock-url][![Faraday]][Faraday-url][![Figaro]][Figaro-url][![Faker]][Faker-url][![Rubocop]][Rubocop-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -91,17 +94,23 @@ We hope your experience is out of this world!
 
 _Follow the steps below to install and set up this app._
 
-1. Clone this Repository
+1. THIS REPO NEEDS A TWINWORD API KEY. Get a free API Key at [https://www.twinword.com/api/topic-tagging.php](https://www.twinword.com/api/topic-tagging.php)
+2. Clone this Repository
    ```sh
    git clone https://github.com/Inner-Worlds/inner_worlds_be
    ```
-2. In your terminal, run the following commands;
+3. In your terminal, run the following commands;
     ```sh
     bundle install
-    'rails generate graphql:install'
+    rails generate graphql:install
+    bundle exec figaro install
     rails db:{drop,create,migrate,seed}
     ```
-3. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
+4. Add your TwinWord API key to the `application.yml` file
+   ```ruby
+   TWINWORD_API_KEY: 'ENTER YOUR KEY';
+   ```
+5. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -428,3 +437,24 @@ Don't forget to give the project a star! Thanks again!
 
 [GraphQL]: https://img.shields.io/badge/GraphQL-E10098.svg?style=for-the-badge&logo=GraphQL&logoColor=white
 [GraphQL-url]: https://github.com/graphql
+
+[Web-mock]: https://img.shields.io/badge/-WebMock-8B0000?logo=rubygems&logoColor=white&style=for-the-badge
+[Web-mock-url]: https://github.com/bblimke/webmock
+
+[VCR]: https://img.shields.io/badge/-VCR-2F4F4F?logo=rubygems&logoColor=white&style=for-the-badge
+[VCR-url]:  https://github.com/vcr/vcr
+
+[Figaro]: https://img.shields.io/badge/-Figaro-FF4136?logo=rubygems&logoColor=white&style=for-the-badge
+[Figaro-url]: https://github.com/laserlemon/figaro
+
+[Faraday]: https://img.shields.io/badge/-Faraday-3E3E3E?logo=ruby&logoColor=white&style=for-the-badge
+[Faraday-url]: https://github.com/lostisland/faraday
+
+[Github-Actions]: https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white
+[Github-Actions-url]: https://github.com/features/actions
+
+[Rubocop]: https://img.shields.io/badge/RuboCop-000000.svg?style=for-the-badge&logo=RuboCop&logoColor=white
+[Rubocop-url]: https://github.com/rubocop/rubocop
+
+[Render]: https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white
+[Render-url]: https://render.com/
