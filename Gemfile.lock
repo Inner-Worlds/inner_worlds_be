@@ -265,6 +265,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.2.2)
     tilt (2.1.0)
+    timecop (0.9.6)
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -306,6 +307,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-scheduler
   simplecov
+  timecop
   tzinfo-data
   vcr
   webmock
