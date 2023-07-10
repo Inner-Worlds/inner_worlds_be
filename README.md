@@ -67,7 +67,7 @@ We hope your experience is out of this world!
 
 ### Built With
 
-[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![GraphQL]][GraphQL-url][![RSpec]][RSpec-url][![Github-Actions]][Github-Actions-url][![Render]][Render-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![Puma]][Puma-url][![VCR]][VCR-url][![Web-mock]][Web-mock-url][![Faraday]][Faraday-url][![Figaro]][Figaro-url][![Faker]][Faker-url][![Rubocop]][Rubocop-url]
+[![Rails]][Rails-url][![PostgreSQL]][PostgreSQL-url][![GraphQL]][GraphQL-url][![RSpec]][RSpec-url][![Redis]][Redis-url][![Github-Actions]][Github-Actions-url][![Render]][Render-url][![Shoulda-Matchers]][Shoulda-Matchers-url][![Puma]][Puma-url][![VCR]][VCR-url][![Web-mock]][Web-mock-url][![Faraday]][Faraday-url][![Figaro]][Figaro-url][![Faker]][Faker-url][![Rubocop]][Rubocop-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -411,6 +411,12 @@ Don't forget to give the project a star! Thanks again!
 [Rails]: https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?logo=ruby-on-rails&logoColor=white&style=for-the-badge
 [Rails-url]: https://rubyonrails.org 
 
+[Ruby]: https://img.shields.io/badge/Ruby-CC342D?style=for-the-badge&logo=ruby&logoColor=white
+[Ruby-url]: https://www.ruby-lang.org/en/
+
+[VSCode]: https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white
+[VSCode-url]: https://code.visualstudio.com/
+
 [Circle-CI]: https://img.shields.io/circleci/build/github/wise-app-team/wise-app-be/main
 [Circle-url]: https://app.circleci.com/
 
@@ -458,3 +464,9 @@ Don't forget to give the project a star! Thanks again!
 
 [Render]: https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white
 [Render-url]: https://render.com/
+
+[Redis]: https://img.shields.io/badge/redis-CC0000.svg?&style=for-the-badge&logo=redis&logoColor=white
+[Redis-url]: https://github.com/redis/redis
+
+[JSONAPI-Serializer]: https://img.shields.io/badge/-JSON%20API%20Serializer-1E90FF?logo=json&logoColor=white&style=for-the-badge
+[JSONAPI-Serializer-url]: https://github.com/jsonapi-serializer/jsonapi-serializer
