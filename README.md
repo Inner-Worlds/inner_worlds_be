@@ -108,7 +108,7 @@ _Follow the steps below to install and set up this app._
     ```
 4. Add your TwinWord API key to the `application.yml` file
    ```ruby
-   TWINWORD_API_KEY: 'ENTER YOUR KEY';
+   TOPICS_KEY: enter_your_key;
    ```
 5. Run `rails s` in your terminal and visit [http://localhost:3000/graphiql](http://localhost:3000/graphiql) to explore the end points for yourself!
 
